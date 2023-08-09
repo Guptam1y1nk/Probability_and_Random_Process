@@ -1,14 +1,5 @@
-import numpy as np                       #Importing numpy
-<<<<<<< HEAD
-import matplotlib.pyplot as plt         
-=======
->>>>>>> 0f94fb650ee085f618cc7669b10c16dd22520923
-A = np.array([[1,1],[5,-7]])             #Defining the vector A
-B = np.array([2,20])                     #Defining the vector B
-x = np.linalg.solve(A,B)                 #applying linalg.solve to find x such that Ax=B
-print(x)                                 #printing the solution of equation Ax=B 
-<<<<<<< HEAD
-
+import matplotlib.pyplot as plt
+import numpy as np
 
 # Coordinates of the point
 x_point = 17/6
@@ -46,5 +37,3 @@ plt.text(x_point, y_point, 'H', fontsize=12, verticalalignment='bottom')
 plt.grid(True)
 plt.show()
 
-=======
->>>>>>> 0f94fb650ee085f618cc7669b10c16dd22520923
