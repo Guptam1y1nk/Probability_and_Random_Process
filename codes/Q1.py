@@ -71,10 +71,12 @@ def alt_foot(A,B,C):
 A = np.array([1,-1])
 B = np.array([-4, 6])
 C = np.array([-3,-5])
-H = np.array([17/6,-5/6])
 D = alt_foot(A,B,C)
 E = alt_foot(B,A,C)
 F = alt_foot(C,A,B)
+
+#Finding orthocentre
+H = line_intersect(norm_vec(B,E),E,norm_vec(C,F),F)
 
 #Generating all lines
 x_AB = line_gen(A,B)	
