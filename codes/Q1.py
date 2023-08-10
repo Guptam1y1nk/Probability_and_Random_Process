@@ -72,6 +72,9 @@ A = np.array([1,-1])
 B = np.array([-4, 6])
 C = np.array([-3,-5])
 H = np.array([17/6,-5/6])
+D = alt_foot(A,B,C)
+E = alt_foot(B,A,C)
+F = alt_foot(C,A,B)
 
 #Generating all lines
 x_AB = line_gen(A,B)	
@@ -100,7 +103,15 @@ plt.plot(x_BH[0,:],x_BH[1,:],label='$BH$')
 plt.plot(x_AH[0,:],x_AH[1,:],linestyle = 'dashed',label='$AH$')
 
 #Labeling the coordinates
-tri_coords = np.vstack((A,B,C,alt_foot(A,B,C),alt_foot(B,A,C),alt_foot(C,A,B),H)).T
+A = A.reshape(-1,1)
+B = B.reshape(-1,1)
+C = C.reshape(-1,1)
+D = D.reshape(-1,1)
+E = E.reshape(-1,1)
+F = F.reshape(-1,1)
+H = H.reshape(-1,1)
+tri_coords = np.block([[A,B,C,D,E,F,H]])
+#tri_coords = np.vstack((A,B,C,alt_foot(A,B,C),alt_foot(B,A,C),alt_foot(C,A,B),H)).T
 plt.scatter(tri_coords[0,:], tri_coords[1,:])
 vert_labels = ['A','B','C','D','E','F','H']
 for i, txt in enumerate(vert_labels):
