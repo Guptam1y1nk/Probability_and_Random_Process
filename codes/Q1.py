@@ -93,11 +93,11 @@ x_AH = line_gen(A,H)
 plt.plot(x_AB[0,:],x_AB[1,:],label='$AB$')
 plt.plot(x_BC[0,:],x_BC[1,:],label='$BC$')
 plt.plot(x_CA[0,:],x_CA[1,:],label='$CA$')
-plt.plot(x_AD[0,:],x_AD[1,:],label='$AD$')
-plt.plot(x_BE[0,:],x_BE[1,:],label='$BE$')
-plt.plot(x_AE[0,:],x_AE[1,:],linestyle = 'dashed',label='$AE$')
-plt.plot(x_CF[0,:],x_CF[1,:],label='$CF$')
-plt.plot(x_AF[0,:],x_AF[1,:],linestyle = 'dashed',label='$AF$')
+plt.plot(x_AD[0,:],x_AD[1,:],label='$AD_1$')
+plt.plot(x_BE[0,:],x_BE[1,:],label='$BE_1$')
+plt.plot(x_AE[0,:],x_AE[1,:],linestyle = 'dashed',label='$AE_1$')
+plt.plot(x_CF[0,:],x_CF[1,:],label='$CF_1$')
+plt.plot(x_AF[0,:],x_AF[1,:],linestyle = 'dashed',label='$AF_1$')
 plt.plot(x_CH[0,:],x_CH[1,:],label='$CH$')
 plt.plot(x_BH[0,:],x_BH[1,:],label='$BH$')
 plt.plot(x_AH[0,:],x_AH[1,:],linestyle = 'dashed',label='$AH$')
@@ -113,7 +113,7 @@ H = H.reshape(-1,1)
 tri_coords = np.block([[A,B,C,D,E,F,H]])
 #tri_coords = np.vstack((A,B,C,alt_foot(A,B,C),alt_foot(B,A,C),alt_foot(C,A,B),H)).T
 plt.scatter(tri_coords[0,:], tri_coords[1,:])
-vert_labels = ['A','B','C','D','E','F','H']
+vert_labels = ['A','B','C','D_1','E_1','F_1','H']
 for i, txt in enumerate(vert_labels):
     plt.annotate(txt, # this is the text
                  (tri_coords[0,i], tri_coords[1,i]), # this is the point to label
