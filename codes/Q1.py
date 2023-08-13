@@ -128,6 +128,6 @@ plt.ylabel('$y$')
 plt.legend(loc='best')
 plt.grid() # minor
 plt.axis('equal')
-plt.savefig('/home/mayank/tri_sss.png')
+plt.savefig('../figs/tri_sss.png')
 plt.show()
 
