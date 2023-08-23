@@ -507,6 +507,33 @@ x_icirc= circ_gen(I,r)
 [O,r] = ccircle(A,B,C)
 x_ccirc= circ_gen(O,radius)
 
+#Ploting the triangle
+x_AB = line_gen(A,B)
+x_BC = line_gen(B,C)
+x_CA = line_gen(C,A)
+plt.plot(x_AB[0,:],x_AB[1,:],label='$AB$')
+plt.plot(x_BC[0,:],x_BC[1,:],label='$BC$')
+plt.plot(x_CA[0,:],x_CA[1,:],label='$CA$')
+tri_coords = np.block([[A],[B],[C]])
+plt.scatter(tri_coords[:,0], tri_coords[:,1])
+vert_labels = ['A','B','C']
+for i, txt in enumerate(vert_labels):
+    plt.annotate(txt, # this is the text
+                 (tri_coords[i,0], tri_coords[i,1]), # this is the point to label
+                 textcoords="offset points", # how to position the text
+                 xytext=(0,10), # distance from text to points (x,y)
+                 ha='center') # horizontal alignment can be left, right or center
+plt.xlabel('$x$')
+plt.ylabel('$y$')
+plt.legend(loc='best')
+plt.grid() # minor
+plt.axis('equal')
+plt.title('Triangle')
+plt.savefig('../figs/figure_5.png')
+fig = plt.gcf()
+fig.canvas.manager.set_window_title('Figure 5')
+plt.show()
+
 #Ploting the medians
 plt.subplot(222)
 x_AB = line_gen(A,B)

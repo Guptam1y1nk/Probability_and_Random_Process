@@ -1,6 +1,6 @@
 %\let\negmedspace\undefined
 %\let\negthickspace\undefined
-\documentclass[journal,12pt,twocolumn]{IEEEtran}
+\documentclass[journal,12pt,onecolumn]{IEEEtran}
 %       \def\inputGnumericTable{}                                 %%
 \usepackage{cite}
 \usepackage{amsmath,amssymb,amsfonts,amsthm}
@@ -217,40 +217,89 @@ Random Vector Assignment
 % creates the second title. It will be ignored for other modes.
 %\IEEEpeerreviewmaketitle
 
+%\section{1.1}
 \counterwithin{figure}{section}
-\section{Figures}
+%\subsection{Figure}
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=\columnwidth]{figs/figure5.png}
+	\caption{Triangle generated using python}
+	\label{fig33:Triangle}	
+\end{figure}
+\counterwithin{table}{section}
+%\subsection{Table}
+\begin{table}[!ht]
+	\input{tables/table1.tex}
+	\caption{Equations of lines}
+	\label{tab33:equations}	
+\end{table}
+
+%\section{1.2}
+%\subsection{Figure}
 \begin{figure}[!ht]
 	\centering
 	\includegraphics[width=\columnwidth]{figs/figure1.png}
 	\caption{Triangle with centroid generated using python}
 	\label{fig33:Triangle_with_centroid}	
 \end{figure}
+%\subsection{Table}
+\begin{table}[!ht]
+	\input{tables/table2.tex}
+	\caption{Equations of lines}
+	\label{tab33:equations}	
+\end{table}
+
+%\section{1.3}
+%\subsection{Figure}
 \begin{figure}[!ht]
 	\centering
 	\includegraphics[width=\columnwidth]{figs/figure2.png}
 	\caption{Triangle with altitude generated using python}
 	\label{fig33:Triangle_with_altitude}	
 \end{figure}
+%\subsection{Table}
+\begin{table}[!ht]
+	\input{tables/table3.tex}
+	\caption{Equations of lines}
+	\label{tab33:equations}	
+\end{table}
+
+%\section{1.4}
+%\subsection{Figure}
 \begin{figure}[!ht]
 	\centering
 	\includegraphics[width=\columnwidth]{figs/figure3.png}
 	\caption{Triangle with incircle generated using python}
 	\label{fig33:Triangle_with_incircle}	
 \end{figure}
+%\subsection{Table}
+\begin{table}[!ht]
+	\input{tables/table4.tex}
+	\caption{Equations of lines}
+	\label{tab33:equations}	
+\end{table}
+
+%\section{1.5}
+%\subsection{Figure}
 \begin{figure}[!ht]
 	\centering
 	\includegraphics[width=\columnwidth]{figs/figure4.png}
 	\caption{Triangle with circumcircle generated using python}
 	\label{fig33:Triangle_with_circumcircle}	
 \end{figure}
-
-\counterwithin{table}{section}
-\section{Table}
+%\subsection{Table}
 \begin{table}[!ht]
-	\input{tables/table.tex}
+	\input{tables/table5.tex}
 	\caption{Equations of lines}
 	\label{tab33:equations}	
 \end{table}
 
-\end{document}
+%\counterwithin{table}{section}
+%\subsection{Table}
+%\begin{table}[!ht]
+%	\input{tables/table.tex}
+%	\caption{Equations of lines}
+%	\label{tab33:equations}	
+%\end{table}
 
+\end{document}
