@@ -18,6 +18,7 @@
 \usepackage{listings}
 \usepackage{chngcntr}
 \usepackage{gvv}
+\usepackage[section]{placeins}
 %
 %\usepackage{setspace}
 %\usepackage{gensymb}
@@ -216,90 +217,85 @@ Random Vector Assignment
 % For peerreview papers, this IEEEtran command inserts a page break and
 % creates the second title. It will be ignored for other modes.
 %\IEEEpeerreviewmaketitle
-
-%\section{1.1}
+Consider a triangle with vertices,\\
+$\vec{A}$ = \myvec{3\\-5} , $\vec{B}$ = \myvec{-5\\-3} , $\vec{C}$ = \myvec{3\\-1}
+\section{Vector}
 \counterwithin{figure}{section}
-%\subsection{Figure}
-\begin{figure}[!ht]
+\counterwithin{table}{section}
+\subsection{Table}
+\begin{table}[!htb]
+	\input{tables/table1.tex}
+	\caption{Equations related to triangle}
+	\label{tab33:equations_vector}	
+\end{table}
+\subsection{Figure}
+\begin{figure}[!htb]
 	\centering
-	\includegraphics[width=\columnwidth]{figs/figure5.png}
+	\includegraphics[width=\columnwidth]{figs/figure_5.png}
 	\caption{Triangle generated using python}
 	\label{fig33:Triangle}	
 \end{figure}
-\counterwithin{table}{section}
-%\subsection{Table}
-\begin{table}[!ht]
-	\input{tables/table1.tex}
-	\caption{Equations of lines}
-	\label{tab33:equations}	
-\end{table}
 
-%\section{1.2}
-%\subsection{Figure}
-\begin{figure}[!ht]
+\section{Median}
+\subsection{Table}
+\begin{table}[!htb]
+	\input{tables/table2.tex}
+	\caption{Equations related to median}
+	\label{tab33:equations_median}	
+\end{table}
+\FloatBarrier
+\subsection{Figure}
+\begin{figure}[!htb]
 	\centering
-	\includegraphics[width=\columnwidth]{figs/figure1.png}
+	\includegraphics[width=\columnwidth]{figs/figure_1.png}
 	\caption{Triangle with centroid generated using python}
 	\label{fig33:Triangle_with_centroid}	
 \end{figure}
-%\subsection{Table}
-\begin{table}[!ht]
-	\input{tables/table2.tex}
-	\caption{Equations of lines}
-	\label{tab33:equations}	
-\end{table}
+\FloatBarrier
 
-%\section{1.3}
-%\subsection{Figure}
-\begin{figure}[!ht]
+\section{Altitude}
+\subsection{Table}
+\begin{table}[!htb]
+	\input{tables/table3.tex}
+	\caption{Equations related to altitude}
+	\label{tab33:equations_altitude}	
+\end{table}
+\subsection{Figure}
+\begin{figure}[!htb]
 	\centering
-	\includegraphics[width=\columnwidth]{figs/figure2.png}
+	\includegraphics[width=\columnwidth]{figs/figure_2.png}
 	\caption{Triangle with altitude generated using python}
 	\label{fig33:Triangle_with_altitude}	
 \end{figure}
-%\subsection{Table}
-\begin{table}[!ht]
-	\input{tables/table3.tex}
-	\caption{Equations of lines}
-	\label{tab33:equations}	
-\end{table}
 
-%\section{1.4}
-%\subsection{Figure}
-\begin{figure}[!ht]
-	\centering
-	\includegraphics[width=\columnwidth]{figs/figure3.png}
-	\caption{Triangle with incircle generated using python}
-	\label{fig33:Triangle_with_incircle}	
-\end{figure}
-%\subsection{Table}
-\begin{table}[!ht]
+\section{Perpendicular Bisector}
+\subsection{Table}
+\begin{table}[!htb]
 	\input{tables/table4.tex}
-	\caption{Equations of lines}
-	\label{tab33:equations}	
+	\caption{Equations related to circumcircle}
+	\label{tab33:equations_circumcenter}	
 \end{table}
-
-%\section{1.5}
-%\subsection{Figure}
-\begin{figure}[!ht]
+\subsection{Figure}
+\begin{figure}[!htb]
 	\centering
-	\includegraphics[width=\columnwidth]{figs/figure4.png}
+	\includegraphics[width=\columnwidth]{figs/figure_4.png}
 	\caption{Triangle with circumcircle generated using python}
 	\label{fig33:Triangle_with_circumcircle}	
 \end{figure}
-%\subsection{Table}
-\begin{table}[!ht]
-	\input{tables/table5.tex}
-	\caption{Equations of lines}
-	\label{tab33:equations}	
-\end{table}
 
-%\counterwithin{table}{section}
-%\subsection{Table}
-%\begin{table}[!ht]
-%	\input{tables/table.tex}
-%	\caption{Equations of lines}
-%	\label{tab33:equations}	
-%\end{table}
+\section{Angular Bisector}
+\subsection{Table}
+\begin{table}[!htb]
+	\input{tables/table5.tex}
+	\caption{Equations related to incircle}
+	\label{tab33:equations_incircle}	
+\end{table}
+\subsection{Figure}
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=\columnwidth]{figs/figure_3.png}
+	\caption{Triangle with incircle generated using python}
+	\label{fig33:Triangle_with_incircle}	
+\end{figure}
 
 \end{document}

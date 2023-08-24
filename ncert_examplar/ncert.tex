@@ -219,14 +219,19 @@ A girl calculates that the probability of her winning the first prize in a lotte
 %
 \\ \solution
 %
-Let X denote the bernoulli variable\\
-X = 1 denotes that she bought the ticket
+Let the random variable be X and p is the probability that she won the lottery 
+\[
+X =
+\begin{cases}
+	1 & \text{if she bought the ticket}, \\
+	0 & \text{if she didn't buy the ticket},
+\end{cases}
+\]
 \begin{align*}
-	\text{Probability of winning (p\_X(1))} &= 0.08\\
-	\text{Number of tickets sold } &= 6000\\
-	p\_X(1) &= \frac{\text{Number of tickets bought}}{\text{Total number of tickets sold}}\\
-	0.08 &= \frac {X(1)}{6000}\\
-	X(1) &= 0.08 * 6000\\
-	     &= 480\\
+	\text{Number of tickets sold (n) } &= 6000\\
+	\pr{X = 1} &= 0.08\\
+	\frac{n(X = 1)}{n} &= 0.08\\
+	n(X = 1) &= 0.08 * 6000\\
+	n(X = 1) &= 480
 \end{align*}
 \end{document}

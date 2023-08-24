@@ -46,6 +46,7 @@ print('')
 #Finding the collinearity
 Mat = np.array([[1,1,1],[A[0],B[0],C[0]],[A[1],B[1],C[1]]])
 rank = np.linalg.matrix_rank(Mat)
+print('rank=',rank)
 if (rank<=2):
 	print("Hence proved that points A,B,C in a triangle are collinear")
 else:
@@ -535,7 +536,7 @@ fig.canvas.manager.set_window_title('Figure 5')
 plt.show()
 
 #Ploting the medians
-plt.subplot(222)
+#plt.subplot(222)
 x_AB = line_gen(A,B)
 x_BC = line_gen(B,C)
 x_CA = line_gen(C,A)
@@ -569,7 +570,7 @@ fig.canvas.manager.set_window_title('Figure 1')
 plt.show()
 
 #Ploting altitudes
-plt.subplot(221)
+#plt.subplot(221)
 x_AB = line_gen(A,B)
 x_BC = line_gen(B,C)
 x_CA = line_gen(C,A)
@@ -603,7 +604,7 @@ fig.canvas.manager.set_window_title('Figure 2')
 plt.show()
 
 #Plotting incircle
-plt.subplot(121)
+#plt.subplot(121)
 x_AB = line_gen(A,B)
 x_BC = line_gen(B,C)
 x_CA = line_gen(C,A)
@@ -639,7 +640,7 @@ plt.show()
 
 
 #Plotting circumcircle
-plt.subplot(122)
+#plt.subplot(122)
 x_AB = line_gen(A,B)
 x_BC = line_gen(B,C)
 x_CA = line_gen(C,A)
