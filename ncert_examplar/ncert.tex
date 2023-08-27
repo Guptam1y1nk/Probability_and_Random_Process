@@ -54,15 +54,15 @@
 %\usepackage{tfrupee}
 %\usepackage{stmaryrd}
 %\usetkzobj{all}
-%    \usepackage{color}                                            %%
-%    \usepackage{array}                                            %%
-%    \usepackage{longtable}                                        %%
-%    \usepackage{calc}                                             %%
-%    \usepackage{multirow}                                         %%
-%    \usepackage{hhline}                                           %%
-%    \usepackage{ifthen}                                           %%
+    \usepackage{color}                                            %%
+    \usepackage{array}                                            %%
+    \usepackage{longtable}                                        %%
+    \usepackage{calc}                                             %%
+    \usepackage{multirow}                                         %%
+    \usepackage{hhline}                                           %%
+    \usepackage{ifthen}                                           %%
   %optionally (for landscape tables embedded in another document): %%
-%    \usepackage{lscape}     
+    \usepackage{lscape}     
 %\usepackage{multicol}
 %\usepackage{chngcntr}
 %\usepackage{enumerate}
@@ -219,18 +219,14 @@ A girl calculates that the probability of her winning the first prize in a lotte
 %
 \\ \solution
 %
-Let the random variable be X and p is the probability that she won the lottery 
-\[
-X =
-\begin{cases}
-	1 & \text{if she bought the ticket}, \\
-	0 & \text{if she didn't buy the ticket},
-\end{cases}
-\]
+\begin{table}[!htb]
+	\input{tables/table.tex}
+	\caption{Information table}
+	\label{table:33}	
+\end{table}
 \begin{align*}
-	\text{Number of tickets sold (n) } &= 6000\\
 	\pr{X = 1} &= 0.08\\
-	\frac{n(X = 1)}{n} &= 0.08\\
+	\frac{n(X = 1)}{N} &= 0.08\\
 	n(X = 1) &= 0.08 * 6000\\
 	n(X = 1) &= 480
 \end{align*}

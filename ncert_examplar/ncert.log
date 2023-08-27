@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2023.8.2)  24 AUG 2023 15:06
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2023.8.2)  27 AUG 2023 16:11
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1028,16 +1028,58 @@ l.110 }
 ? 
 \c@matchleft=\count331
 \c@matchright=\count332
+) (/usr/share/texlive/texmf-dist/tex/latex/tools/array.sty
+Package: array 2021/10/04 v2.5f Tabular extension package (FMi)
+\col@sep=\dimen323
+\ar@mcellbox=\box73
+\extrarowheight=\dimen324
+\NC@list=\toks43
+\extratabsurround=\skip64
+\backup@length=\skip65
+\ar@cellbox=\box74
 )
-\c@theorem=\count333
-\c@problem=\count334
-\c@proposition=\count335
-\c@lemma=\count336
-\c@example=\count337
-\c@rem=\count338
+(/usr/share/texlive/texmf-dist/tex/latex/tools/longtable.sty
+Package: longtable 2021-09-01 v4.17 Multi-page Table package (DPC)
+\LTleft=\skip66
+\LTright=\skip67
+\LTpre=\skip68
+\LTpost=\skip69
+\LTchunksize=\count333
+\LTcapwidth=\dimen325
+\LT@head=\box75
+\LT@firsthead=\box76
+\LT@foot=\box77
+\LT@lastfoot=\box78
+\LT@gbox=\box79
+\LT@cols=\count334
+\LT@rows=\count335
+\c@LT@tables=\count336
+\c@LT@chunks=\count337
+\LT@p@ftn=\toks44
+)
+(/usr/share/texlive/texmf-dist/tex/latex/multirow/multirow.sty
+Package: multirow 2021/03/15 v2.8 Span multiple rows of a table
+\multirow@colwidth=\skip70
+\multirow@cntb=\count338
+\multirow@dima=\skip71
+\bigstrutjot=\dimen326
+)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/hhline.sty
+Package: hhline 2020/01/04 v2.04 Table rule package (DPC)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/lscape.sty
+Package: lscape 2020/05/28 v3.02 Landscape Pages (DPC)
+)
+\c@theorem=\count339
+\c@problem=\count340
+\c@proposition=\count341
+\c@lemma=\count342
+\c@example=\count343
+\c@rem=\count344
 LaTeX Font Info:    Trying to load font information for OT1+txr on input line 9
 3.
- (/usr/share/texlive/texmf-dist/tex/latex/txfonts/ot1txr.fd
+
+(/usr/share/texlive/texmf-dist/tex/latex/txfonts/ot1txr.fd
 File: ot1txr.fd 2000/12/15 v3.1
 ) (./ncert.aux)
 \openout1 = `ncert.aux'.
@@ -1124,17 +1166,17 @@ LaTeX Font Info:    Font shape `OT1/txr/b/it' in size <24> not available
 -- Lines per column: 50 (exact).
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count339
-\scratchdimen=\dimen323
-\scratchbox=\box73
-\nofMPsegments=\count340
-\nofMParguments=\count341
-\everyMPshowfont=\toks43
-\MPscratchCnt=\count342
-\MPscratchDim=\dimen324
-\MPnumerator=\count343
-\makeMPintoPDFobject=\count344
-\everyMPtoPDFconversion=\toks44
+\scratchcounter=\count345
+\scratchdimen=\dimen327
+\scratchbox=\box80
+\nofMPsegments=\count346
+\nofMParguments=\count347
+\everyMPshowfont=\toks45
+\MPscratchCnt=\count348
+\MPscratchDim=\dimen328
+\MPnumerator=\count349
+\makeMPintoPDFobject=\count350
+\everyMPtoPDFconversion=\toks46
 ) (/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
@@ -1144,7 +1186,7 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-\c@lstlisting=\count345
+\c@lstlisting=\count351
 \symgns@font=\mathgroup10
 LaTeX Font Info:    Overwriting symbol font `gns@font' in version `bold'
 (Font)                  TS1/txr/m/n --> TS1/txr/b/n on input line 93.
@@ -1167,7 +1209,7 @@ Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
 (/usr/share/texlive/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
 Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
-\c@section@level=\count346
+\c@section@level=\count352
 )
 LaTeX Info: Redefining \ref on input line 93.
 LaTeX Info: Redefining \pageref on input line 93.
@@ -1177,62 +1219,78 @@ LaTeX Info: Redefining \nameref on input line 93.
 \@outlinefile=\write4
 \openout4 = `ncert.out'.
 
-LaTeX Font Info:    Trying to load font information for U+txsya on input line 2
-23.
+ (./tables/table.tex
+\gnumericTableWidth=\skip72
+\gnumericTableWidthComplete=\skip73
+\gnumericMultiRowLength=\skip74
+\gnumericColA=\skip75
+LaTeX Font Info:    Trying to load font information for U+txsya on input line 1
+49.
 
 (/usr/share/texlive/texmf-dist/tex/latex/txfonts/utxsya.fd
 File: utxsya.fd 2000/12/15 v3.1
 )
-LaTeX Font Info:    Trying to load font information for U+txsyb on input line 2
-23.
+LaTeX Font Info:    Trying to load font information for U+txsyb on input line 1
+49.
 
 (/usr/share/texlive/texmf-dist/tex/latex/txfonts/utxsyb.fd
 File: utxsyb.fd 2000/12/15 v3.1
 )
-LaTeX Font Info:    Trying to load font information for U+txmia on input line 2
-23.
+LaTeX Font Info:    Trying to load font information for U+txmia on input line 1
+49.
 
 (/usr/share/texlive/texmf-dist/tex/latex/txfonts/utxmia.fd
 File: utxmia.fd 2000/12/15 v3.1
 )
-LaTeX Font Info:    Trying to load font information for U+txsyc on input line 2
-23.
+LaTeX Font Info:    Trying to load font information for U+txsyc on input line 1
+49.
 
 (/usr/share/texlive/texmf-dist/tex/latex/txfonts/utxsyc.fd
 File: utxsyc.fd 2000/12/15 v3.1
 )
-LaTeX Font Info:    Trying to load font information for TS1+txr on input line 2
-23.
+LaTeX Font Info:    Trying to load font information for TS1+txr on input line 1
+49.
 
 (/usr/share/texlive/texmf-dist/tex/latex/txfonts/ts1txr.fd
 File: ts1txr.fd 2000/12/15 v3.1
+)
+\gnumericColB=\skip76
+\gnumericColC=\skip77
+
+Overfull \hbox (119.73312pt too wide) in paragraph at lines 154--246
+[][] 
+ []
+
 ) [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
 
 
 ] (./ncert.aux)
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
 Package rerunfilecheck Info: File `ncert.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 29084 strings out of 478287
- 574006 string characters out of 5849290
- 825453 words of memory out of 5000000
- 46679 multiletter control sequences out of 15000+600000
- 525132 words of font info for 139 fonts, out of 8000000 for 9000
+ 29435 strings out of 478287
+ 579914 string characters out of 5849290
+ 837427 words of memory out of 5000000
+ 47003 multiletter control sequences out of 15000+600000
+ 536332 words of font info for 167 fonts, out of 8000000 for 9000
  1144 hyphenation exceptions out of 8191
- 117i,10n,120p,497b,327s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 117i,15n,120p,497b,350s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
 e/texmf-dist/fonts/type1/public/txfonts/rtxmi.pfb></usr/share/texlive/texmf-dis
 t/fonts/type1/public/txfonts/rtxr.pfb></usr/share/texlive/texmf-dist/fonts/type
-1/public/txfonts/txex.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txf
-onts/txsy.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb><
-/usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texl
-ive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on ncert.pdf (1 page, 41211 bytes).
+1/public/txfonts/rtxsc.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/tx
+fonts/txsy.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb>
+</usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/tex
+live/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on ncert.pdf (1 page, 45179 bytes).
 PDF statistics:
- 52 PDF objects out of 1000 (max. 8388607)
- 34 compressed objects within 1 object stream
- 2 named destinations out of 1000 (max. 500000)
+ 53 PDF objects out of 1000 (max. 8388607)
+ 35 compressed objects within 1 object stream
+ 3 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 
