@@ -79,7 +79,7 @@
 
 %%  If we want landscape mode in an embedded document, comment out  %%
 %%  the line above and uncomment the two below. The table will      %%
-%%  begin on a new page and run in landscape mode.              %%
+%%  begin on a new page and run in landscape mode.             %%
 %       \def\gnumericTableEnd{\end{landscape}}
 %       \begin{landscape}
 
@@ -126,7 +126,6 @@
 \setlength\gnumericTableWidth{%
 	75pt+%
 	75pt+%
-	75pt+%
 0pt}
 \def\gumericNumCols{3}
 \setlength\gnumericTableWidthComplete{\gnumericTableWidth+%
@@ -147,14 +146,12 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \ifthenelse{\isundefined{\gnumericColA}}{\newlength{\gnumericColA}}{}\settowidth{\gnumericColA}{\begin{tabular}{@{}p{125pt*\gnumericScale}@{}}x\end{tabular}}
-\ifthenelse{\isundefined{\gnumericColB}}{\newlength{\gnumericColB}}{}\settowidth{\gnumericColB}{\begin{tabular}{@{}p{75pt*\gnumericScale}@{}}x\end{tabular}}
-\ifthenelse{\isundefined{\gnumericColC}}{\newlength{\gnumericColC}}{}\settowidth{\gnumericColC}{\begin{tabular}{@{}p{180pt*\gnumericScale}@{}}x\end{tabular}}
+\ifthenelse{\isundefined{\gnumericColB}}{\newlength{\gnumericColB}}{}\settowidth{\gnumericColB}{\begin{tabular}{@{}p{200pt*\gnumericScale}@{}}x\end{tabular}}
 
 %\begin{longtable}[c]{%
 \begin{tabular}[c]{%
 	b{\gnumericColA}%
 	b{\gnumericColB}%
-	b{\gnumericColC}%
 	}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -189,44 +186,33 @@
 %	\endlastfoot
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\hhline{|-|-|-|}
+\hhline{|-|-|}
 	 \multicolumn{1}{|p{\gnumericColA}|}%
-	{\gnumericPB{\raggedright}\gnumbox[l]{\textbf{parameter}}}
+	{\gnumericPB{\raggedright}\gnumbox[l]{\textbf{random variables}}}
 	&\multicolumn{1}{p{\gnumericColB}|}%
-	{\gnumericPB{\raggedright}\gnumbox[l]{\textbf{value}}}
-	&\multicolumn{1}{p{\gnumericColC}|}%
 	{\gnumericPB{\raggedright}\gnumbox[l]{\textbf{description}}}
 \\ 
-\hhline{|---|}
+\hhline{|--|}
 	\multicolumn{1}{|p{\gnumericColA}|}%
-	{\setlength{\gnumericMultiRowLength}{0pt}%
-	 \addtolength{\gnumericMultiRowLength}{\gnumericColA}%
-	 \multirow{3}[1]{\gnumericMultiRowLength}{\parbox{\gnumericMultiRowLength}{%
-	 \gnumericPB{\centering}\gnumbox{Random Variable $X$}}}}
+	{\gnumericPB{\centering}\gnumbox[l]{$X$}}
 	&\multicolumn{1}{p{\gnumericColB}|}%
-	{\gnumericPB{\raggedright}\gnumbox[l]{0}}
-	&\multicolumn{1}{p{\gnumericColC}|}%
-	{\gnumericPB{\raggedright}\gnumbox[l]{No head}}
+	{\gnumericPB{\raggedright}\gnumbox[l]{number appearing on first dice}}
 \\
-\hhline{~|--|}
+\hhline{|--|}
 	\multicolumn{1}{|p{\gnumericColA}|}%
-	{}
+	{\gnumericPB{\centering}\gnumbox[l]{$Y$}}
 	&\multicolumn{1}{p{\gnumericColB}|}%
-	{\gnumericPB{\raggedright}\gnumbox[l]{1}}
-	&\multicolumn{1}{p{\gnumericColC}|}%
-	{\gnumericPB{\raggedright}\gnumbox[l]{One head}}
+	{\gnumericPB{\raggedright}\gnumbox[l]{number appearing on second dice}}
 \\
-\hhline{~|--|}
+\hhline{|--|}
 	\multicolumn{1}{|p{\gnumericColA}|}%
-	{}
+	{\gnumericPB{\centering}\gnumbox[l]{$Z$}}
 	&\multicolumn{1}{p{\gnumericColB}|}%
-	{\gnumericPB{\raggedright}\gnumbox[l]{2}}
-	&\multicolumn{1}{p{\gnumericColC}|}%
-	{\gnumericPB{\raggedright}\gnumbox[l]{Two heads}}
+	{\gnumericPB{\raggedright}\gnumbox[l]{Sum of numbers appearing on both dice}}
 \\
-\hhline{|-|-|-|}
+\hhline{|-|-|}
 %\end{longtable}
 \end{tabular}
 
 \ifthenelse{\isundefined{\languageshorthands}}{}{\languageshorthands{\languagename}}
-\gnumericTableEnd  
+\gnumericTableEnd   
