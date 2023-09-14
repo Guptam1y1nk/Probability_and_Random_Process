@@ -222,14 +222,14 @@ Question: A bag contain (2n+1) coins. It is known that n of these coins have a h
 \begin{align}
 	p_X(0) &= \frac{n+1}{2n+1}\\
 	p_X(1) &= \frac{n}{2n+1}\\
-	p_Y(0) &= \frac{1}{2}\\
-	p_Z(0) &= 1
+	\pr{Y=0|X=0} &= \frac{1}{2}\\
+	\pr{Y=0|X=1} &= 1
 \end{align}
 
 Hence, the probability of head is
 
 \begin{align}
-	p_X(0) p_Y(0) + p_X(1) p_Z(0) &= \frac{n+1}{2n+1} \times \frac{1}{2} + \frac{n}{2n+1}\times 1\\
+	p_X(0) \pr{Y=0|X=0} + p_X(1) \pr{Y=0|X=1} &= \frac{n+1}{2n+1} \times \frac{1}{2} + \frac{n}{2n+1}\times 1\\
 				      &= \frac{3n+1}{2(2n+1)}
 \end{align}
 
