@@ -223,79 +223,82 @@ Question: A factory produces bulbs. The probability that any one bulb is defecti
 	\label{table:gaussian/9/3/25/}	
 \end{table}
 %
-\begin{align}
-	\mu &=np\\
-	    &= 10\brak{\frac{1}{50}}\\
-	    &= \frac{1}{5}\\
-	{\sigma}^2 &= npq\\
-	&= 10\brak{\frac{1}{50}}\brak{\frac{49}{50}}\\
-	&= \frac{49}{250}	
-\end{align}
-%
 \begin{enumerate}[label=(\roman*)]
 \item Gaussian Distribution\\
-Lets define a random variable $Y$ which represents the number of defective bulbs drawn.
+Let Y is the Gaussian obtained by approximating binomial with parameters n,p then By Central limit theroem, 
 \begin{align}
-Y = \{0,1,2,3,4,5,6,7,8,9,10\}
+	Y \sim \mathcal{N}(np,npq)
+\end{align}
+CDF of $Y$ is:
+\begin{align}
+	F_Y(x)&=\pr{Y \le x} \\
+	&=\pr{Y-\mu \le x-\mu} \\
+	&=\pr{\frac{Y-\mu}{\sigma} \le \frac{x-\mu}{\sigma}} \label{eq:9.3.25a}
+\end{align}
+Since, 
+\begin{align}
+	\frac{Y-\mu}{\sigma} \sim \mathcal{N}(0,1)
+\end{align}
+Q function is defined
+\begin{align}
+	\qfunc{x} &= \pr{Y > x} \, \forall x \in Y \sim \mathcal{N}(0,1) \label{eq:9.3.25b}
+\end{align}
+From \eqref{eq:9.3.25a} and \eqref{eq:9.3.25b}, 
+\begin{align}
+	F_Y(x)&=1-\pr{\frac{Y-\mu}{\sigma} > \frac{x-\mu}{\sigma}}\\
+	&= 
+    \begin{cases}
+        1-\qfunc{ \frac{x-\mu}{\sigma}}, &  x > \mu \\
+        \qfunc{ \frac{\mu-x}{\sigma}} , &  x < \mu
+    \end{cases} \label{eq:9.3.25c}
 \end{align}
 %
-The gaussian distribution function is defined as:
-\begin{align}
-P_Y\brak{x} &= \frac{1}{\sqrt{2\pi{\sigma}^2}} e^{-\frac{\brak{x-\mu}^2}{2{\sigma}^2}} 
-\end{align}
-
-The central limit theorm states that we can take a random variable $Z$ such that,
-\begin{align}
-Z \approx \frac{Y-\mu}{\sigma}
-\end{align}
-
-Now, Z is a random variable with $\gauss{0}{1}$. Hence, the gaussian distribution function changes to:
-\begin{align}
-P_Z\brak{x} &= \frac{1}{\sqrt{2\pi}} e^{-\frac{{x}^2}{2}}\label{9.3.25}
-\end{align}
-
 \begin{enumerate}[label=(\alph*)]
-\item If we consider no bulb is defective,
+\item If we consider no bulb is defective, we need to find
+\begin{align}
+	\pr{Y = 0} &= \pr{Y \le 1} - \pr{Y \le 0}\\
+		   &= F_Y(1) - F_Y(0)
+\end{align}
+From \eqref{eq:9.3.25c} and \autoref{table:gaussian/9/3/25/},
+\begin{align}
+	F_Y(0)&=\qfunc{ \frac{0.2-0}{0.196}} \\
+	&= \qfunc{1}\\
+	&= 0.1587\\
+	F_Y(1)&=1 -\qfunc{ \frac{1-0.2}{0.44}} \\
+	&= 1 - \qfunc{1.8}\\
+	&= 0.964\\
+	\pr{Y = 0} &= F_Y(1) - F_Y(0)\\
+		   &= 0.964 - 0.1587\\
+		   &= 0.8053
+\end{align}
+\item If we consider exactly 2 bulbs to be defective, the we need to find 
+\begin{align}
+	\pr{Y = 2} &= \pr{Y \le 2} - \pr{Y \le 1}\\
+		   &= F_Y(2) - F_Y(1)
+\end{align}
+From \eqref{eq:9.3.25c} and \autoref{table:gaussian/9/3/25/},
+\begin{align}
+	F_Y(2)&=1 -\qfunc{ \frac{2-0.2}{0.44}} \\
+	&= 1 - \qfunc{4}\\
+	&= 0.999\\
+	F_Y(1)&=1 -\qfunc{ \frac{1-0.2}{0.44}} \\
+	&= 1 - \qfunc{1.8}\\
+	&= 0.964\\
+	\pr{Y = 2} &= F_Y(2) - F_Y(1)\\
+		   &= 0.999 - 0.964\\
+		   &= 0.036
+\end{align}
+\item If more than 8 bulbs are working properly then either 1 bulb is defective or no bulb is defetive we need to find
+\begin{align}
+	\pr{Y \le 1} = F_Y(1)
+\end{align}
+From \eqref{eq:9.3.25c} and \autoref{table:gaussian/9/3/25/},
+\begin{align}
+	F_Y(1)&=1 -\qfunc{ \frac{1-0.2}{0.44}} \\
+	&= 1 - \qfunc{1.8}\\
+	&= 0.964
+\end{align}
 
-\begin{align}
-Y &= 0\\
-	Z &\approx -\frac{\sqrt{10}}{7}
-\end{align}
-Substituting values in \eqref{9.3.25},
-
-\begin{align}
-	P_Z\brak{-\frac{\sqrt{10}}{7}}&= \frac{1}{\sqrt{2\pi}} e^{-\frac{5}{49}}\\
-			      &= 0.3602
-\end{align}
-
-\item If we consider exactly 2 bulbs to be defective,
-\begin{align}
-	Y &= 2\\
-	Z &\approx \frac{2 - \frac{1}{5}}{\frac{7}{5\sqrt{10}}}\\ 
-	  &\approx \frac{9\sqrt{10}}{7}
-\end{align}
-Substituting values in \eqref{9.3.25},
-\begin{align}
-P_Z\brak{\frac{9\sqrt{10}}{7}} &= \frac{1}{\sqrt{2\pi}} e^{-\frac{405}{49}}\\
-			      &= 1.026 \times 10^{-4}
-\end{align}
-
-\item If more than 8 bulbs are working properly then either 1 bulb is defective or no bulb is defetive  
-\begin{align}
-	Y &= 1\\
-	Z &\approx \frac{1 - \frac{1}{5}}{\frac{7}{5\sqrt{10}}}\\
-	  &\approx \frac{4\sqrt{10}}{7}
-\end{align}
-Substituting values in \eqref{9.3.25},
-\begin{align}
-P_Z\brak{\frac{4\sqrt{10}}{7}} &= \frac{1}{\sqrt{2\pi}} e^{-\frac{80}{49}}\\
-			      &= 0.078
-\end{align}
-Required Probabilty 
-\begin{align}
-P_Z\brak{-\frac{\sqrt{10}}{7}} + P_Z\brak{\frac{4\sqrt{10}}{7}} &= 0.3602 + 0.078\\ 
-								&= 0.482
-\end{align}
 \end{enumerate}
 \item Binomial Distribution\\
 Lets define a random variable $X$ which represents the number of defective bulbs.
