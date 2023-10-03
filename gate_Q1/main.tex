@@ -229,24 +229,22 @@ the following statements is true?
 \solution
 \begin{align}
 	\epsilon_{k} &\myeq \mathcal{N}(0,\sigma^2)\\ 
-	f(\epsilon_{k}) &= \frac{1}{\sigma \sqrt{2\pi}} e^{\frac{-1}{2}\frac{(\epsilon_{k}-0)^2}{\sigma^2}}\\
+	f(\epsilon_{k}) &= \frac{1}{2} e^{-|\epsilon_{k}|}\\
 	\text{Likelihood function}: f(\epsilon_{1}\epsilon_{2}....\epsilon_{n}) &= \prod_{k = 1}^{n} f(\epsilon_{k})\\
-	L &= \prod_{k = 1}^{n}\frac{1}{\sigma \sqrt{2\pi}}e^{\frac{-1}{2}\frac{(\epsilon_{k})^2}{\sigma^2}}\\
-	  &= \brak{\frac{1}{\sigma \sqrt{2\pi}}}^n e^{\brak{\frac{-1}{2} \sum_{k = 1}^{n} \frac{(\epsilon_{k})^2}{\sigma^2}}}\\
-	  &= \brak{\frac{1}{\sigma \sqrt{2\pi}}}^n e^{\brak{\frac{-1}{2\sigma^2} \sum_{k = 1}^{n} \brak{y_{k}-\alpha_{0}-\alpha_{1} \log_{e}k}^2}}\\
-L_{1} = \ln L&= -\frac{n}{2}\ln 2\pi - \frac{n}{2}\ln\sigma^2 - \frac{1}{2\sigma^2} \sum_{k = 1}^{n} \brak{y_{k}-\alpha_{0}-\alpha_{1} \log_{e}k}^2\\  
-	L_{1} &= \text{function of }\alpha_{0}, \alpha_{1} \\
-	\frac{\partial L_{1}}{\partial \alpha_{0}} &= -\frac{1}{\sigma^2} \sum_{k = 1}^{n} \brak{y_{k}-\alpha_{0}-\alpha_{1} \log_{e}k} = 0\\
-	\sum_{k = 1}^{n} \brak{y_{k}-\alpha_{0}-\alpha_{1} \log_{e}k} &= 0\\
-	n\bar{y} - n\alpha_{0} - \alpha_{1}n\bar{x} &= 0 , \quad \text{where } \bar{x} = \frac{1}{n} \sum_{k = 1}^{n}\log_{e}k,\quad \bar{y} = \frac{1}{n} \sum_{k = 1}^{n}y_{k}\\
-	\implies \tilde{\alpha_{0}} &= \bar{y} - \tilde{\alpha_{1}}\bar{x}\\
-	\frac{\partial L_{1}}{\partial \alpha_{1}} &= -\frac{1}{\sigma^2} \sum_{k = 1}^{n} \brak{y_{k}-\alpha_{0}-\alpha_{1} \log_{e}k}\log_{e}k = 0\\
-	\implies \tilde{\alpha_{1}} &= \frac{\sum_{k = 1}^{n}\brak{\log_{e}k-\bar{x}}\brak{y_{k}-\bar{y}}}{\sum_{k = 1}^{n}\brak{\log_{e}k-\bar{x}}^2} 
+	L &= \prod_{k = 1}^{n}\frac{1}{2}e^{-|\epsilon_{k}|}\\
+	  &= \brak{\frac{1}{2}}^n e^{\brak{ \sum_{k = 1}^{n}-|\epsilon_{k}|}}\\
+	  &= \brak{\frac{1}{2}}^n e^{\brak{ \sum_{k = 1}^{n} \brak{-|y_{k}-\alpha_{0}-\alpha_{1} \log_{e}k|}}}\\
+L_{1} = \ln L&= -n\ln 2 -\sum_{k = 1}^{n} \brak{|y_{k}-\alpha_{0}-\alpha_{1} \log_{e}k|}\\  
+	L_{1} &= \text{function of }\alpha_{0}, \alpha_{1}
 \end{align}
-$\because$ Maximum likelihood estimator of $\alpha_{0}$ and $\alpha_{1}$ exist\\
+$\because$ $\exists$ a value of $\alpha_{0}$ and $\alpha_{1}$ which will maximise the value of $L_{1}$ which can be obtained by differentiating $L_{1}$ by $\alpha_{0}$ and $\alpha_{1}$\\ 
+$\therefore$ Maximum likelihood estimator of $\alpha_{0}$ and $\alpha_{1}$ exist\\
 $\therefore$ Option \brak{A} and \brak{B} are incorrect\\
-The least square estimator of $\alpha_{0}$ is $\tilde{\alpha_{0}}$ and is unique\\
-The least square estimator of $\alpha_{1}$ is $\tilde{\alpha_{1}}$ and is unique\\
-$\therefore$ Option \brak{D} is incorrect\\
-$\therefore$ Option \brak{C} is correct
+The least square estimator of $\alpha_{0}$ and $\alpha_{1}$ is $\tilde{\alpha_{0}}$ and $\tilde{\alpha_{1}}$ which will minimise
+\begin{align}
+	Q\brak{\alpha_{0},\alpha_{1}} &=  \sum_{k = 1}^{n} \brak{y_{k}-\alpha_{0}-\alpha_{1} \log_{e}k}^2
+\end{align}
+$\because$ $\exists$ a value of $\alpha_{0}$ and $\alpha_{1}$ which will manimise the value of $Q\brak{\alpha_{0},\alpha_{1}}$ which can be obtained by differentiating $Q\brak{\alpha_{0},\alpha_{1}}$ by $\alpha_{0}$ and $\alpha_{1}$\\ 
+$\therefore$ Least square estimator of $\alpha_{0}$ and $\alpha_{1}$ exists and are unique\\
+$\therefore$ Option \brak{C} is correct and \brak{D} is incorrect\\
 \end{document}
