@@ -228,23 +228,50 @@ the following statements is true?
 \end{enumerate}
 \solution
 \begin{align}
-	\epsilon_{k} &\myeq \mathcal{N}(0,\sigma^2)\\ 
 	f(\epsilon_{k}) &= \frac{1}{2} e^{-|\epsilon_{k}|}\\
 	\text{Likelihood function}: f(\epsilon_{1}\epsilon_{2}....\epsilon_{n}) &= \prod_{k = 1}^{n} f(\epsilon_{k})\\
-	L &= \prod_{k = 1}^{n}\frac{1}{2}e^{-|\epsilon_{k}|}\\
-	  &= \brak{\frac{1}{2}}^n e^{\brak{ \sum_{k = 1}^{n}-|\epsilon_{k}|}}\\
-	  &= \brak{\frac{1}{2}}^n e^{\brak{ \sum_{k = 1}^{n} \brak{-|y_{k}-\alpha_{0}-\alpha_{1} \log_{e}k|}}}\\
-L_{1} = \ln L&= -n\ln 2 -\sum_{k = 1}^{n} \brak{|y_{k}-\alpha_{0}-\alpha_{1} \log_{e}k|}\\  
+	L     &= \prod_{k = 1}^{n}\frac{1}{2}e^{-|\epsilon_{k}|}\\
+L_{1} = \ln L &= \ln\brak{\prod_{k = 1}^{n}\frac{1}{2}e^{-|\epsilon_{k}|}}\\
+	      &= \sum_{k = 1}^{n} \ln\brak{\frac{1}{2}e^{-|\epsilon_{k}|}}\\
+	      &= \sum_{k = 1}^{n} \brak{-\ln 2 -|y_{k}-\alpha_{0}-\alpha_{1} \log_{e}k|}\\
+	      &= -n\ln 2 -\sum_{k = 1}^{n} \brak{|y_{k}-\alpha_{0}-\alpha_{1} \log_{e}k|}\\  
 	L_{1} &= \text{function of }\alpha_{0}, \alpha_{1}
 \end{align}
-$\because$ $\exists$ a value of $\alpha_{0}$ and $\alpha_{1}$ which will maximise the value of $L_{1}$ which can be obtained by differentiating $L_{1}$ by $\alpha_{0}$ and $\alpha_{1}$\\ 
+\begin{enumerate}
+	\item Maximum likelihood estimator\\
+	We need to find the value of $\alpha_{0}$ and $\alpha_{1}$ which will maximise the value of $L_{1}$ i.e. the value of 
+	$\alpha_{0}$ and $\alpha_{1}$ which will minimise the value of $|y_{k}-\alpha_{0}-\alpha_{1} \log_{e}k|$
+	\begin{align}
+		|y_{k}-\alpha_{0}-\alpha_{1} \log_{e}k| &=
+		\begin{cases}
+		y_{k}-\alpha_{0}-\alpha_{1} \log_{e}k ,\quad y_{k}-\alpha_{0}-\alpha_{1} \log_{e}k > 0
+			\\
+		-\brak{y_{k}-\alpha_{0}-\alpha_{1} \log_{e}k} ,\quad y_{k}-\alpha_{0}-\alpha_{1} \log_{e}k < 0
+		\end{cases}
+	\end{align}
+	To minimize $\sum_{k = 1}^{n} \brak{|y_{k}-\alpha_{0}-\alpha_{1} \log_{e}k|}$, 
+	we should choose $\alpha_{0}$ and $\alpha_{1}$ such that as many terms as possible fall into the second case
+	(negative contribution) and as few terms as possible fall into the second case (positive contribution).
+	\begin{align}
+		y_{k} -\alpha_{1} \log_{e}k &< \alpha_{0} \\%\quad \forall k|y_{k} - \alpha_{1}\log_{e}k \geq 0\\
+		\therefore \tilde{\alpha_{0}} &= \underset{\brak{k|y_{k} - \alpha_{0}-\alpha_{1}\log_{e}k < 0}}{min} \brak{y_{k} - \alpha_{1}\log_{e}k}\\
+		y_{k} - \alpha_{0} &< \alpha_{1} \log_{e}k \\%\quad \forall k|y_{k} -\alpha_{0}- \alpha_{1}\log_{e}k < 0\\
+		\therefore \tilde{\alpha_{1}} &= \underset{\brak{k|y_{k} -\alpha_{0} -\alpha_{1}\log_{e}k < 0}}{min} \brak{\frac{y_{k} - \alpha_{0}}{\log_{e}k}}\\
+	\end{align}
 $\therefore$ Maximum likelihood estimator of $\alpha_{0}$ and $\alpha_{1}$ exist\\
 $\therefore$ Option \brak{A} and \brak{B} are incorrect\\
+\item Least square estimator\\
 The least square estimator of $\alpha_{0}$ and $\alpha_{1}$ is $\tilde{\alpha_{0}}$ and $\tilde{\alpha_{1}}$ which will minimise
 \begin{align}
-	Q\brak{\alpha_{0},\alpha_{1}} &=  \sum_{k = 1}^{n} \brak{y_{k}-\alpha_{0}-\alpha_{1} \log_{e}k}^2
+	Q\brak{\alpha_{0},\alpha_{1}} &=  \sum_{k = 1}^{n} \brak{y_{k}-\alpha_{0}-\alpha_{1} \log_{e}k}^2\\
+\frac{\partial Q}{\partial \alpha_{0}} &= -2 \sum_{k = 1}^{n} \brak{y_{k}-\alpha_{0}-\alpha_{1} \log_{e}k} = 0\\
+	\sum_{k = 1}^{n} \brak{y_{k}-\alpha_{0}-\alpha_{1} \log_{e}k} &= 0\\
+	n\bar{y} - n\alpha_{0} - \alpha_{1}n\bar{x} &= 0 , \quad \text{where } \bar{x} = \frac{1}{n} \sum_{k = 1}^{n}\log_{e}k,\quad \bar{y} = \frac{1}{n} \sum_{k = 1}^{n}y_{k}\\
+	\implies \tilde{\alpha_{0}} &= \bar{y} - \tilde{\alpha_{1}}\bar{x}\\
+	\frac{\partial Q}{\partial \alpha_{1}} &= -2 \sum_{k = 1}^{n} \brak{y_{k}-\alpha_{0}-\alpha_{1} \log_{e}k}\log_{e}k = 0\\
+	\implies \tilde{\alpha_{1}} &= \frac{\sum_{k = 1}^{n}\brak{\log_{e}k-\bar{x}}\brak{y_{k}-\bar{y}}}{\sum_{k = 1}^{n}\brak{\log_{e}k-\bar{x}}^2}
 \end{align}
-$\because$ $\exists$ a value of $\alpha_{0}$ and $\alpha_{1}$ which will manimise the value of $Q\brak{\alpha_{0},\alpha_{1}}$ which can be obtained by differentiating $Q\brak{\alpha_{0},\alpha_{1}}$ by $\alpha_{0}$ and $\alpha_{1}$\\ 
 $\therefore$ Least square estimator of $\alpha_{0}$ and $\alpha_{1}$ exists and are unique\\
 $\therefore$ Option \brak{C} is correct and \brak{D} is incorrect\\
+\end{enumerate}
 \end{document}
