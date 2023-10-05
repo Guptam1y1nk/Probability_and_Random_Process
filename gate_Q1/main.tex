@@ -262,11 +262,16 @@ $\therefore$ Maximum likelihood estimator of $\alpha_{0}$ and $\alpha_{1}$ exist
 $\therefore$ Option \brak{A} and \brak{B} are incorrect\\
 \item Least square estimator\\
 The least square estimator of $\alpha_{0}$ and $\alpha_{1}$ is $\tilde{\alpha_{0}}$ and $\tilde{\alpha_{1}}$ which will minimise
+\begin{table}[!htb]
+	\input{./tables/table.tex}
+	\caption{Variables used}
+	\label{table_gate23_st_26}
+\end{table}
 \begin{align}
 	Q\brak{\alpha_{0},\alpha_{1}} &=  \sum_{k = 1}^{n} \brak{y_{k}-\alpha_{0}-\alpha_{1} \log_{e}k}^2\\
 \frac{\partial Q}{\partial \alpha_{0}} &= -2 \sum_{k = 1}^{n} \brak{y_{k}-\alpha_{0}-\alpha_{1} \log_{e}k} = 0\\
 	\sum_{k = 1}^{n} \brak{y_{k}-\alpha_{0}-\alpha_{1} \log_{e}k} &= 0\\
-	n\bar{y} - n\alpha_{0} - \alpha_{1}n\bar{x} &= 0 , \quad \text{where } \bar{x} = \frac{1}{n} \sum_{k = 1}^{n}\log_{e}k,\quad \bar{y} = \frac{1}{n} \sum_{k = 1}^{n}y_{k}\\
+	n\bar{y} - n\alpha_{0} - \alpha_{1}n\bar{x} &= 0 \\%,\quad \text{where } \bar{x} = \frac{1}{n} \sum_{k = 1}^{n}\log_{e}k,\quad \bar{y} = \frac{1}{n} \sum_{k = 1}^{n}y_{k}\\
 	\implies \tilde{\alpha_{0}} &= \bar{y} - \tilde{\alpha_{1}}\bar{x}\\
 	\frac{\partial Q}{\partial \alpha_{1}} &= -2 \sum_{k = 1}^{n} \brak{y_{k}-\alpha_{0}-\alpha_{1} \log_{e}k}\log_{e}k = 0\\
 	\implies \tilde{\alpha_{1}} &= \frac{\sum_{k = 1}^{n}\brak{\log_{e}k-\bar{x}}\brak{y_{k}-\bar{y}}}{\sum_{k = 1}^{n}\brak{\log_{e}k-\bar{x}}^2}
