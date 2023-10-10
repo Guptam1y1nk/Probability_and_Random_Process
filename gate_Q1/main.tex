@@ -15,6 +15,7 @@
 \usepackage{tkz-euclide} % loads  TikZ and tkz-base
 \usepackage{listings}
 \usepackage{graphicx}
+\usepackage{optidef}
 \usepackage{gvv}
 \usepackage{placeins}
 \newcommand\myeq{\mathrel{\stackrel{\makebox[0pt]{\mbox{\normalfont\tiny iid}}}{\sim}}}
@@ -240,43 +241,23 @@ L_{1} = \ln L &= \ln\brak{\prod_{k = 1}^{n}\frac{1}{2}e^{-|\epsilon_{k}|}}\\
 \begin{enumerate}
 	\item Maximum likelihood estimator\\
 	We need to find the value of $\alpha_{0}$ and $\alpha_{1}$ which will maximise the value of $L_{1}$ i.e. the value of 
-	$\alpha_{0}$ and $\alpha_{1}$ which will minimise the value of $|y_{k}-\alpha_{0}-\alpha_{1} \log_{e}k|$
+	$\alpha_{0}$ and $\alpha_{1}$ which will minimise the value of $\sum_{k = 1}^{n}|y_{k}-\alpha_{0}-\alpha_{1} \log_{e}k|$
 	\begin{align}
 		|y_{k}-\alpha_{0}-\alpha_{1} \log_{e}k| &=
-		\begin{cases}
-		y_{k}-\alpha_{0}-\alpha_{1} \log_{e}k ,\quad y_{k}-\alpha_{0}-\alpha_{1} \log_{e}k > 0
-			\\
-		-\brak{y_{k}-\alpha_{0}-\alpha_{1} \log_{e}k} ,\quad y_{k}-\alpha_{0}-\alpha_{1} \log_{e}k < 0
-		\end{cases}
+		\bigg|\vec{y_{k}} - \myvec{1& \log_{e}k} \myvec{\alpha_{0} \\ \alpha_{1}} \bigg|\\
+		\vec{y} &= \myvec{y_1 \\ y_2\\ \vdots \\ y_n}\\
+		\vec{A} &= \myvec{1&\log_{e}1\\1&\log_{e}2\\ \vdots & \vdots \\1&\log_{e}n}\\
+		\vec{x} &= \myvec{\alpha_{0} \\ \alpha_{1}}
 	\end{align}
-	To minimize $\sum_{k = 1}^{n} \brak{|y_{k}-\alpha_{0}-\alpha_{1} \log_{e}k|}$, 
-	we should choose $\alpha_{0}$ and $\alpha_{1}$ such that as many terms as possible fall into the second case
-	(negative contribution) and as few terms as possible fall into the second case (positive contribution).
-	\begin{align}
-		y_{k} -\alpha_{1} \log_{e}k &< \alpha_{0} \\%\quad \forall k|y_{k} - \alpha_{1}\log_{e}k \geq 0\\
-		\therefore \tilde{\alpha_{0}} &= \underset{\brak{k|y_{k} - \alpha_{0}-\alpha_{1}\log_{e}k < 0}}{min} \brak{y_{k} - \alpha_{1}\log_{e}k}\\
-		y_{k} - \alpha_{0} &< \alpha_{1} \log_{e}k \\%\quad \forall k|y_{k} -\alpha_{0}- \alpha_{1}\log_{e}k < 0\\
-		\therefore \tilde{\alpha_{1}} &= \underset{\brak{k|y_{k} -\alpha_{0} -\alpha_{1}\log_{e}k < 0}}{min} \brak{\frac{y_{k} - \alpha_{0}}{\log_{e}k}}\\
-	\end{align}
-$\therefore$ Maximum likelihood estimator of $\alpha_{0}$ and $\alpha_{1}$ exist\\
-$\therefore$ Option \brak{A} and \brak{B} are incorrect\\
-\item Least square estimator\\
-The least square estimator of $\alpha_{0}$ and $\alpha_{1}$ is $\tilde{\alpha_{0}}$ and $\tilde{\alpha_{1}}$ which will minimise
-\begin{table}[!htb]
-	\input{./tables/table.tex}
-	\caption{Variables used}
-	\label{table_gate23_st_26}
-\end{table}
-\begin{align}
-	Q\brak{\alpha_{0},\alpha_{1}} &=  \sum_{k = 1}^{n} \brak{y_{k}-\alpha_{0}-\alpha_{1} \log_{e}k}^2\\
-\frac{\partial Q}{\partial \alpha_{0}} &= -2 \sum_{k = 1}^{n} \brak{y_{k}-\alpha_{0}-\alpha_{1} \log_{e}k} = 0\\
-	\sum_{k = 1}^{n} \brak{y_{k}-\alpha_{0}-\alpha_{1} \log_{e}k} &= 0\\
-	n\bar{y} - n\alpha_{0} - \alpha_{1}n\bar{x} &= 0 \\%,\quad \text{where } \bar{x} = \frac{1}{n} \sum_{k = 1}^{n}\log_{e}k,\quad \bar{y} = \frac{1}{n} \sum_{k = 1}^{n}y_{k}\\
-	\implies \tilde{\alpha_{0}} &= \bar{y} - \tilde{\alpha_{1}}\bar{x}\\
-	\frac{\partial Q}{\partial \alpha_{1}} &= -2 \sum_{k = 1}^{n} \brak{y_{k}-\alpha_{0}-\alpha_{1} \log_{e}k}\log_{e}k = 0\\
-	\implies \tilde{\alpha_{1}} &= \frac{\sum_{k = 1}^{n}\brak{\log_{e}k-\bar{x}}\brak{y_{k}-\bar{y}}}{\sum_{k = 1}^{n}\brak{\log_{e}k-\bar{x}}^2}
-\end{align}
-$\therefore$ Least square estimator of $\alpha_{0}$ and $\alpha_{1}$ exists and are unique\\
-$\therefore$ Option \brak{C} is correct and \brak{D} is incorrect\\
+	\begin{mini*}|s|
+		{\alpha_{0},\alpha_{1}}{\vec{y}-\vec{A}\vec{x}}
+{}{}
+		\addConstraint{\vec{y}-\vec{A}\vec{x}\geq0}{}
+\end{mini*}
+	\begin{mini*}|s|
+		{\alpha_{0},\alpha_{1}}{-\brak{\vec{y}-\vec{A}\vec{x}}}
+{}{}
+		\addConstraint{\vec{y}-\vec{A}\vec{x}\leq0}{}
+\end{mini*}
 \end{enumerate}
 \end{document}
