@@ -242,22 +242,91 @@ L_{1} = \ln L &= \ln\brak{\prod_{k = 1}^{n}\frac{1}{2}e^{-|\epsilon_{k}|}}\\
 	\item Maximum likelihood estimator\\
 	We need to find the value of $\alpha_{0}$ and $\alpha_{1}$ which will maximise the value of $L_{1}$ i.e. the value of 
 	$\alpha_{0}$ and $\alpha_{1}$ which will minimise the value of $\sum_{k = 1}^{n}|y_{k}-\alpha_{0}-\alpha_{1} \log_{e}k|$
-	\begin{align}
-		|y_{k}-\alpha_{0}-\alpha_{1} \log_{e}k| &=
-		\bigg|\vec{y_{k}} - \myvec{1& \log_{e}k} \myvec{\alpha_{0} \\ \alpha_{1}} \bigg|\\
-		\vec{y} &= \myvec{y_1 \\ y_2\\ \vdots \\ y_n}\\
-		\vec{A} &= \myvec{1&\log_{e}1\\1&\log_{e}2\\ \vdots & \vdots \\1&\log_{e}n}\\
-		\vec{x} &= \myvec{\alpha_{0} \\ \alpha_{1}}
-	\end{align}
-	\begin{mini*}|s|
-		{\alpha_{0},\alpha_{1}}{\vec{y}-\vec{A}\vec{x}}
+		\begin{enumerate}
+\item With respect to $\alpha_{0}$
+\begin{enumerate}
+	\item For $y_{k}-\alpha_{0}-\alpha_{1} \log_{e}k > 0$
+\begin{mini*}|s|
+{\alpha_{0}}{y_{k}-\alpha_{0}-\alpha_{1} \log_{e}k}
 {}{}
-		\addConstraint{\vec{y}-\vec{A}\vec{x}\geq0}{}
+\addConstraint{\alpha_{0}\leq y_{k}-\alpha_{1}\log_{e}k}{}
 \end{mini*}
-	\begin{mini*}|s|
-		{\alpha_{0},\alpha_{1}}{-\brak{\vec{y}-\vec{A}\vec{x}}}
+Using Lagrange multiplier method
+\begin{align}
+	L\brak{\lambda} &= y_{k}-\alpha_{0}-\alpha_{1} \log_{e}k - \lambda(\alpha_{0}-y_{k}+\alpha_{1} \log_{e}k)\\
+	\frac{\partial L}{\partial \alpha_{0}} &= -1-\lambda = 0\\
+	\frac{\partial L}{\partial \lambda} &= y_{k}-\alpha_{0}-\alpha_{1} \log_{e}k = 0\\
+	\lambda &= -1\\
+	\alpha_{0} &= y_{k} - \alpha_{1} \log_{e}k
+\end{align}
+	\item For $y_{k}-\alpha_{0}-\alpha_{1} \log_{e}k < 0$
+\begin{mini*}|s|
+{\alpha_{0}}{-\brak{y_{k}-\alpha_{0}-\alpha_{1} \log_{e}k}}
 {}{}
-		\addConstraint{\vec{y}-\vec{A}\vec{x}\leq0}{}
+\addConstraint{\alpha_{0}\geq y_{k}-\alpha_{1}\log_{e}k}{}
 \end{mini*}
+Using Lagrange multiplier method
+\begin{align}
+	L\brak{\lambda} &= -\brak{y_{k}-\alpha_{0}-\alpha_{1} \log_{e}k} - \lambda(\alpha_{0}-y_{k}+\alpha_{1} \log_{e}k)\\
+        \frac{\partial L}{\partial \alpha_{0}} &= 1-\lambda = 0\\
+        \frac{\partial L}{\partial \lambda} &= y_{k}-\alpha_{0}-\alpha_{1} \log_{e}k = 0\\
+        \lambda &= 1\\
+        \alpha_{0} &= y_{k} - \alpha_{1} \log_{e}k
+\end{align}
+As value of $\alpha_{0}$ matches for both cases of modulus\\
+$\therefore$ The maximum likelihood estimator of $\alpha_{0}$ exist
+\end{enumerate}
+\item With respect to $\alpha_{1}$
+	\begin{enumerate}
+	\item For $y_{k}-\alpha_{0}-\alpha_{1} \log_{e}k > 0$
+\begin{mini*}|s|
+{\alpha_{1}}{y_{k}-\alpha_{0}-\alpha_{1} \log_{e}k}
+{}{}
+	\addConstraint{\alpha_{1}\leq \frac{y_{k}-\alpha_{0}}{\log_{e}k}}{}
+\end{mini*}
+Using Lagrange multiplier method
+\begin{align}
+	L\brak{\lambda} &= y_{k}-\alpha_{0}-\alpha_{1} \log_{e}k - \lambda \brak{\alpha_{1}-\frac{y_{k}-\alpha_{0}}{\log_{e}k}}\\
+        \frac{\partial L}{\partial \alpha_{1}} &= -\log_{e}k -\lambda = 0\\
+	\frac{\partial L}{\partial \lambda} &= -\brak{\alpha_{1}-\frac{y_{k}-\alpha_{0}}{\log_{e}k}} = 0\\
+        \lambda &= -\log_{e}k\\
+	\alpha_{1} &= \frac{y_{k} - \alpha_{0}}{\log_{e}k}
+\end{align}
+	\item For $y_{k}-\alpha_{0}-\alpha_{1} \log_{e}k < 0$
+\begin{mini*}|s|
+{\alpha_{1}}{-\brak{y_{k}-\alpha_{0}-\alpha_{1} \log_{e}k}}
+{}{}
+        \addConstraint{\alpha_{1}\geq \frac{y_{k}-\alpha_{0}}{\log_{e}k}}{}
+\end{mini*}
+Using Lagrange multiplier method
+\begin{align}
+	L\brak{\lambda} &= -\brak{y_{k}-\alpha_{0}-\alpha_{1} \log_{e}k} - \lambda \brak{\alpha_{1}-\frac{y_{k}-\alpha_{0}}{\log_{e}k}}\\
+        \frac{\partial L}{\partial \alpha_{1}} &= \log_{e}k -\lambda = 0\\
+        \frac{\partial L}{\partial \lambda} &= -\brak{\alpha_{1}-\frac{y_{k}-\alpha_{0}}{\log_{e}k}} = 0\\
+        \lambda &= \log_{e}k\\
+        \alpha_{1} &= \frac{y_{k} - \alpha_{0}}{\log_{e}k}
+\end{align}
+As value of $\alpha_{1}$ matches for both cases of modulus\\
+$\therefore$ The maximum likelihood estimator of $\alpha_{1}$ exist\\
+\end{enumerate}
+$\therefore$ Option \brak{A} and \brak{B} are incorrect\\
+\item Least square estimator\\
+The least square estimator of $\alpha_{0}$ and $\alpha_{1}$ is $\tilde{\alpha_{0}}$ and $\tilde{\alpha_{1}}$ which will minimise
+\begin{table}[!htb]
+	\input{./tables/table.tex}
+	\caption{Variables used}
+	\label{table_gate23_st_26}
+\end{table}
+\begin{align}
+	Q\brak{\alpha_{0},\alpha_{1}} &=  \sum_{k = 1}^{n} \brak{y_{k}-\alpha_{0}-\alpha_{1} \log_{e}k}^2\\
+\frac{\partial Q}{\partial \alpha_{0}} &= -2 \sum_{k = 1}^{n} \brak{y_{k}-\alpha_{0}-\alpha_{1} \log_{e}k} = 0\\
+	\sum_{k = 1}^{n} \brak{y_{k}-\alpha_{0}-\alpha_{1} \log_{e}k} &= 0\\
+	n\bar{y} - n\alpha_{0} - \alpha_{1}n\bar{x} &= 0 \\%,\quad \text{where } \bar{x} = \frac{1}{n} \sum_{k = 1}^{n}\log_{e}k,\quad \bar{y} = \frac{1}{n} \sum_{k = 1}^{n}y_{k}\\
+	\implies \tilde{\alpha_{0}} &= \bar{y} - \tilde{\alpha_{1}}\bar{x}\\
+	\frac{\partial Q}{\partial \alpha_{1}} &= -2 \sum_{k = 1}^{n} \brak{y_{k}-\alpha_{0}-\alpha_{1} \log_{e}k}\log_{e}k = 0\\
+	\implies \tilde{\alpha_{1}} &= \frac{\sum_{k = 1}^{n}\brak{\log_{e}k-\bar{x}}\brak{y_{k}-\bar{y}}}{\sum_{k = 1}^{n}\brak{\log_{e}k-\bar{x}}^2}
+\end{align}
+$\therefore$ Least square estimator of $\alpha_{0}$ and $\alpha_{1}$ exists and are unique\\
+$\therefore$ Option \brak{C} is correct and \brak{D} is incorrect\\
 \end{enumerate}
 \end{document}
