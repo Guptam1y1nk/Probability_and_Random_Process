@@ -328,5 +328,37 @@ The least square estimator of $\alpha_{0}$ and $\alpha_{1}$ is $\tilde{\alpha_{0
 \end{align}
 $\therefore$ Least square estimator of $\alpha_{0}$ and $\alpha_{1}$ exists and are unique\\
 $\therefore$ Option \brak{C} is correct and \brak{D} is incorrect\\
+\item Steps for simulation the given distribution whose 
+	probability density function is $ f\brak{x} = \frac{1}{2} e^{-|x|}$
+\begin{enumerate}
+\item Write a function cdf for calculating the cdf of any random variable\\
+	\begin{align}
+  F_X(x) &= 
+  \begin{cases}
+	  \frac{1}{2} e^{x} & x \le 0
+  \\
+	  \frac{1}{2} \brak{2-e^{-x}} &  x > 0
+  \end{cases}
+  \end{align}
+\item Declare a function inverse cdf \brak{I\brak{u}} such that its input is any random number 
+	and output is random variable whose cdf equals that of the given distribution
+	\begin{align}
+  I\brak{u} &=
+  \begin{cases}
+	  \ln\brak{2u} & u \le 0.5
+  \\
+	  -\ln \brak{2-2u} &  u > 0.5
+  \end{cases}
+  \end{align}
+\item Define three arrays random\textunderscore{vars} , cdf\textunderscore{values}
+	, theoretical\textunderscore{cdf}\textunderscore{values}
+	to store random variables, simulated cdf values and theoretical cdf values
+\item Generate random numbers using rand() and calling inverse cdf funtion to generate our random variable
+\item Calling cdf function to calculate the cdf of the generated random variable
+\item Storing the random variable,theoretical cdf and generated cdf into their respective arrays
+\item Storing the data of these three array into a .dat file
+\item Plotting these .dat file in python
+\end{enumerate}
+\end{enumerate}
 \end{enumerate}
 \end{document}
