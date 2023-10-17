@@ -332,7 +332,25 @@ $\therefore$ Option \brak{C} is correct and \brak{D} is incorrect\\
 	probability density function is $ f\brak{x} = \frac{1}{2} e^{-|x|}$
 \begin{enumerate}
 \item Write a function cdf for calculating the cdf of any random variable\\
-	\begin{align}
+	 \begin{align}
+  P_X(x) &= 
+  \begin{cases}
+          \frac{1}{2} e^{x} & x \le 0
+  \\
+          \frac{1}{2} e^{-x} &  x > 0
+  \end{cases}
+  \end{align}
+
+  \begin{align}
+  F_X(x) &= 
+  \begin{cases}
+	  \int_{-\infty}^{x} \brak{\frac{1}{2} e^{x}} dx  & x \le 0
+  \\
+	  \int_{-\infty}^{0} \brak{\frac{1}{2} e^{x}} dx + \int_{0}^{x} \brak{\frac{1}{2} e^{-x}} dx &  x > 0
+  \end{cases}
+  \end{align}
+
+  \begin{align}
   F_X(x) &= 
   \begin{cases}
 	  \frac{1}{2} e^{x} & x \le 0
@@ -341,8 +359,25 @@ $\therefore$ Option \brak{C} is correct and \brak{D} is incorrect\\
   \end{cases}
   \end{align}
 \item Declare a function inverse cdf \brak{I\brak{u}} such that its input is any random number 
-	and output is random variable whose cdf equals that of the given distribution
-	\begin{align}
+	and output is random variable whose cdf equals that of the given distribution\\
+	For x $\le$ 0
+		\begin{align}
+			u &= \frac{1}{2} e^{x}\\
+			e^{x} &= 2u\\
+			x &= \ln{2u}\\
+			\because x \le 0\\
+			u \le 0.5
+		\end{align}
+	For x $>$ 0
+		\begin{align}
+			u &= \frac{1}{2} \brak{2-e^{-x}}\\
+			2-e^{-x} &= 2u\\
+			e^{-x} &= 2-2u\\
+			x &= -\ln \brak{2-2u}\\
+			\because x > 0\\
+			u > 0.5
+		\end{align}
+  \begin{align}
   I\brak{u} &=
   \begin{cases}
 	  \ln\brak{2u} & u \le 0.5
