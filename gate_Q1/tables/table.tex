@@ -52,22 +52,7 @@
 %%                                                                  %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-	\documentclass[12pt%
-			  %,landscape%
-                    ]{report}
-       \usepackage[latin1]{inputenc}
-       \usepackage{fullpage}
-       \usepackage{color}
-       \usepackage{array}
-       \usepackage{longtable}
-       \usepackage{calc}
-       \usepackage{multirow}
-       \usepackage{hhline}
-       \usepackage{ifthen}
-       \newcommand{\myvec}[1]{\ensuremath{\begin{pmatrix}#1\end{pmatrix}}}
-%       \usepackage{gvv}
-	\begin{document}
-
+	
 
 %%  End of the preamble for the standalone. The next section is for %%
 %%  documents which are included into other LaTeX2e files.          %%
@@ -218,4 +203,3 @@
 \end{tabular} 
 
 \ifthenelse{\isundefined{\languageshorthands}}{}{\languageshorthands{\languagename}}
-\gnumericTableEnd

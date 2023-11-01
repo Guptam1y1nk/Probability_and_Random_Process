@@ -1,249 +1,155 @@
-\let\negmedspace\undefined
-\let\negthickspace\undefined
-\documentclass[journal,12pt,onecolumn]{IEEEtran}
-\usepackage{cite}
+\documentclass{beamer}
+\usetheme{Copenhagen}
+\setbeamertemplate{navigation symbols}{}
 \usepackage{amsmath,amssymb,amsfonts,amsthm}
 \usepackage{algorithmic}
+\usepackage{graphicx}
 \usepackage{textcomp}
-\usepackage{xcolor}
 \usepackage{txfonts}
 \usepackage{listings}
-\usepackage{enumitem}
 \usepackage{mathtools}
 \usepackage{gensymb}
-\usepackage[breaklinks=true]{hyperref}
-\usepackage{tkz-euclide} % loads  TikZ and tkz-base
-\usepackage{listings}
-\usepackage{graphicx}
+\usepackage{hyperref}
 \usepackage{optidef}
-\usepackage{gvv}
-\usepackage{placeins}
+\usepackage{tkz-euclide} % loads  TikZ and tkz-base
 \newcommand\myeq{\mathrel{\stackrel{\makebox[0pt]{\mbox{\normalfont\tiny iid}}}{\sim}}}
-%
-%\usepackage{setspace}
-%\usepackage{gensymb}
-%\doublespacing
-%\singlespacing
-
-%\usepackage{graphicx}
-%\usepackage{amssymb}
-%\usepackage{relsize}
-%\usepackage[cmex10]{amsmath}
-%\usepackage{amsthm}
-%\interdisplaylinepenalty=2500
-%\savesymbol{iint}
-%\usepackage{txfonts}
-%\restoresymbol{TXF}{iint}
-%\usepackage{wasysym}
-%\usepackage{amsthm}
-%\usepackage{iithtlc}
-%\usepackage{mathrsfs}
-%\usepackage{txfonts}
-%\usepackage{stfloats}
-%\usepackage{bm}
-%\usepackage{cite}
-%\usepackage{cases}
-%\usepackage{subfig}
-%\usepackage{xtab}
-%\usepackage{longtable}
-%\usepackage{multirow}
-%\usepackage{algorithm}
-%\usepackage{algpseudocode}
-%\usepackage{enumitem}
-%\usepackage{mathtools}
-%\usepackage{tikz}
-%\usepackage{circuitikz}
-%\usepackage{verbatim}
-%\usepackage{tfrupee}
-%\usepackage{stmaryrd}
-%\usetkzobj{all}
+\usepackage{listings}
     \usepackage{color}                                            %%
     \usepackage{array}                                            %%
     \usepackage{longtable}                                        %%
     \usepackage{calc}                                             %%
     \usepackage{multirow}                                         %%
     \usepackage{hhline}                                           %%
-    \usepackage{ifthen}                                           %%
-  %optionally (for landscape tables embedded in another document): %%
-    \usepackage{lscape}     
-%\usepackage{multicol}
-%\usepackage{chngcntr}
-%\usepackage{enumerate}
+    \usepackage{ifthen}    
+    \usepackage{lscape}
+%\usetheme{Frankfurt}
+\providecommand{\abs}[1]{\left\vert#1\right\vert}
+\title{Gate 2023 ST Q26}
+\author{Mayank Gupta}
+\institute{IIT Hyd}
+\date{\today}
 
-%\usepackage{wasysym}
-%\documentclass[conference]{IEEEtran}
-%\IEEEoverridecommandlockouts
-% The preceding line is only needed to identify funding in the first footnote. If that is unneeded, please comment it out.
-
-\newtheorem{theorem}{Theorem}[section]
-\newtheorem{problem}{Problem}
-\newtheorem{proposition}{Proposition}[section]
-\newtheorem{lemma}{Lemma}[section]
-\newtheorem{corollary}[theorem]{Corollary}
-\newtheorem{example}{Example}[section]
-\newtheorem{definition}[problem]{Definition}
-%\newtheorem{thm}{Theorem}[section] 
-%\newtheorem{defn}[thm]{Definition}
-%\newtheorem{algorithm}{Algorithm}[section]
-%\newtheorem{cor}{Corollary}
-\newcommand{\BEQA}{\begin{eqnarray}}
-\newcommand{\EEQA}{\end{eqnarray}}
-\newcommand{\define}{\stackrel{\triangle}{=}}
-\theoremstyle{remark}
-\newtheorem{rem}{Remark}
-
-%\bibliographystyle{ieeetr}
 \begin{document}
-%
-
-\bibliographystyle{IEEEtran}
-
-
-\vspace{3cm}
-
-\title{
-%	\logo{
-	Solution to Gate ST 2023 Q 26
-%	}
+\lstset{
+    language=Python,   % Set the programming language for syntax highlighting
+    basicstyle=\ttfamily, % Set the font style for the code
+    keywordstyle=\color{blue}, % Customize keywords
+    commentstyle=\color{green}, % Customize comments
+    stringstyle=\color{red},   % Customize strings
+    numbers=left,      % Display line numbers
+    numberstyle=\tiny, % Set the style for line numbers
+    breaklines=true,   % Automatically wrap long lines
 }
-\author{ Mayank Gupta %$^{*}$% <-this % stops a space
-%	\thanks{*The author is with the Department
-%		of Electrical Engineering, Indian Institute of Technology, Hyderabad
-%		502285 India e-mail:  gadepall@iith.ac.in. All content in this manual is released under GNU GPL.  Free and open source.}		
+\lstset{
+    language=C,               % Set the programming language
+    basicstyle=\ttfamily,     % Font style for the code
+    keywordstyle=\color{blue}, % Keyword style
+    commentstyle=\color{green},% Comment style
+    stringstyle=\color{red},   % String style
+    numbers=left,             % Display line numbers
+    numberstyle=\tiny,        % Style for line numbers
+    breaklines=true,           % Automatically wrap long lines
+    frame=single,             % Add a frame around the code
+    showstringspaces=false,    % Don't show spaces within strings
+    tabsize=4,                % Set tab size to 4 spaces
+    morekeywords={printf, scanf, int, main, if, else, while}, % Additional keywords
+    extendedchars=true,       % Allow extended characters like underscores
+    literate={~} {$\sim$}{1}, % Replace ~ with a tilde symbol
+    backgroundcolor=\color{gray!10}, % Background color for the code
+    escapeinside={(*@}{@*)},  % Define an escape sequence for LaTeX code within comments
 }
-%\title{
-%	\logo{Matrix Analysis through Octave}{\begin{center}\includegraphics[scale=.24]{tlc}\end{center}}{}{HAMDSP}
-%}
+\providecommand{\pr}[1]{\ensuremath{\Pr\left(#1\right)}}
+\providecommand{\prt}[2]{\ensuremath{p_{#1}^{\left(#2\right)} }}        % own macro for this question
+\providecommand{\qfunc}[1]{\ensuremath{Q\left(#1\right)}}
+\providecommand{\sbrak}[1]{\ensuremath{{}\left[#1\right]}}
+\providecommand{\lsbrak}[1]{\ensuremath{{}\left[#1\right.}}
+\providecommand{\rsbrak}[1]{\ensuremath{{}\left.#1\right]}}
+\providecommand{\brak}[1]{\ensuremath{\left(#1\right)}}
+\providecommand{\lbrak}[1]{\ensuremath{\left(#1\right.}}
+\providecommand{\rbrak}[1]{\ensuremath{\left.#1\right)}}
+\providecommand{\cbrak}[1]{\ensuremath{\left\{#1\right\}}}
+\providecommand{\lcbrak}[1]{\ensuremath{\left\{#1\right.}}
+\providecommand{\rcbrak}[1]{\ensuremath{\left.#1\right\}}}
+\newcommand{\sgn}{\mathop{\mathrm{sgn}}}
+\providecommand{\abs}[1]{\left\vert#1\right\vert}
+\providecommand{\res}[1]{\Res\displaylimits_{#1}} 
+\providecommand{\norm}[1]{\left\lVert#1\right\rVert}
+%\providecommand{\norm}[1]{\lVert#1\rVert}
+\providecommand{\mtx}[1]{\mathbf{#1}}
+\providecommand{\mean}[1]{E\left[ #1 \right]}
+\providecommand{\cond}[2]{#1\middle|#2}
+\providecommand{\fourier}{\overset{\mathcal{F}}{ \rightleftharpoons}}
+\newenvironment{amatrix}[1]{%
+  \left(\begin{array}{@{}*{#1}{c}|c@{}}
+}{%
+  \end{array}\right)
+}
+\newcommand{\cosec}{\,\text{cosec}\,}
+\providecommand{\dec}[2]{\ensuremath{\overset{#1}{\underset{#2}{\gtrless}}}}
+\newcommand{\myvec}[1]{\ensuremath{\begin{pmatrix}#1\end{pmatrix}}}
+\newcommand{\mydet}[1]{\ensuremath{\begin{vmatrix}#1\end{vmatrix}}}
+\newcommand{\myaugvec}[2]{\ensuremath{\begin{amatrix}{#1}#2\end{amatrix}}}
+\providecommand{\rank}{\text{rank}}
+\providecommand{\pr}[1]{\ensuremath{\Pr\left(#1\right)}}
+\providecommand{\qfunc}[1]{\ensuremath{Q\left(#1\right)}}
+	\newcommand*{\permcomb}[4][0mu]{{{}^{#3}\mkern#1#2_{#4}}}
+\newcommand*{\perm}[1][-3mu]{\permcomb[#1]{P}}
+\newcommand*{\comb}[1][-1mu]{\permcomb[#1]{C}}
+\providecommand{\qfunc}[1]{\ensuremath{Q\left(#1\right)}}
+\providecommand{\gauss}[2]{\mathcal{N}\ensuremath{\left(#1,#2\right)}}
+\providecommand{\diff}[2]{\ensuremath{\frac{d{#1}}{d{#2}}}}
+\providecommand{\myceil}[1]{\left \lceil #1 \right \rceil }
+\newcommand\figref{Fig.~\ref}
+\newcommand\tabref{Table~\ref}
+\newcommand{\sinc}{\,\text{sinc}\,}
+\newcommand{\rect}{\,\text{rect}\,}
+
+\begin{frame}
+  \titlepage
+\end{frame}
 
 
-% paper title
-% can use linebreaks \\ within to get better formatting as desired
-%\title{Matrix Analysis through Octave}
-%
-%
-% author names and IEEE memberships
-% note positions of commas and nonbreaking spaces ( ~ ) LaTeX will not break
-% a structure at a ~ so this keeps an author's name from being broken across
-% two lines.
-% use \thanks{} to gain access to the first footnote area
-% a separate \thanks must be used for each paragraph as LaTeX2e's \thanks
-% was not built to handle multiple paragraphs
-%
-
-%\author{<-this % stops a space
-%\thanks{}}
-%}
-% note the % following the last \IEEEmembership and also \thanks - 
-% these prevent an unwanted space from occurring between the last author name
-% and the end of the author line. i.e., if you ths:
-% 
-% \author{....lastname \thanks{...} \thanks{...} }
-%                     ^------------^------------^----Do not want these spaces!
-%
-% a space would be appended to the last name and could cause every name on that
-% line to be shifted left slightly. This is one of those "LaTeX things". For
-% instance, "\textbf{A} \textbf{B}" will typeset as "A B" not "AB". To get
-% "AB" then you have to do: "\textbf{A}\textbf{B}"
-% \thanks is no different in this regard, so shield the last } of each \thanks
-% that ends a line with a % and do not let a space in before the next \thanks.
-% Spaces after \IEEEmembership other than the last one are OK (and needed) as
-% you are supposed to have spaces between the names. For what it is worth,
-% this is a minor point as most people would not even notice if the said evil
-% space somehow managed to creep in.
-
-
-
-% The paper headers
-%\markboth{Journal of \LaTeX\ Class Files,~Vol.~6, No.~1, January~2007}%
-%{Shell \MakeLowercase{\textit{et al.}}: Bare Demo of IEEEtran.cls for Journals}
-% The only time the second header will appear is for the odd numbered pages
-% after the title page when using the twoside option.
-% 
-% *** Note that you probably will NOT want to include the author's ***
-% *** name in the headers of peer review papers.                   ***
-% You can use \ifCLASSOPTIONpeerreview for conditional compilation here if
-% you desire.
-
-
-
-
-% If you want to put a publisher's ID mark on the page you can do it like
-% this:
-%\IEEEpubid{0000--0000/00\$00.00~\copyright~2007 IEEE}
-% Remember, if you use this you must call \IEEEpubidadjcol in the second
-% column for its text to clear the IEEEpubid mark.
-
-
-
-% make the title area
-\maketitle
-
-%\tableofcontents
-
-\bigskip
-
-\renewcommand{\thefigure}{\theenumi}
-\renewcommand{\thetable}{\theenumi}
-%\renewcommand{\theequation}{\theenumi}
-
-%\begin{abstract}
-%%\boldmath
-%In this letter, an algorithm for evaluating the exact analytical bit error rate  (BER)  for the piecewise linear (PL) combiner for  multiple relays is presented. Previous results were available only for upto three relays. The algorithm is unique in the sense that  the actual mathematical expressions, that are prohibitively large, need not be explicitly obtained. The diversity gain due to multiple relays is shown through plots of the analytical BER, well supported by simulations. 
-%
-%\end{abstract}
-% IEEEtran.cls defaults to using nonbold math in the Abstract.
-% This preserves the distinction between vectors and scalars. However,
-% if the journal you are submitting to favors bold math in the abstract,
-% then you can use LaTeX's standard command \boldmath at the very start
-% of the abstract to achieve this. Many IEEE journals frown on math
-% in the abstract anyway.
-
-% Note that keywords are not normally used for peerreview papers.
-%\begin{IEEEkeywords}
-%Cooperative diversity, decode and forward, piecewise linear
-%\end{IEEEkeywords}
-
-
-
-% For peer review papers, you can put extra information on the cover
-% page as needed:
-% \ifCLASSOPTIONpeerreview
-% \begin{center} \bfseries EDICS Category: 3-BBND \end{center}
-% \fi
-%
-% For peerreview papers, this IEEEtran command inserts a page break and
-% creates the second title. It will be ignored for other modes.
-%\IEEEpeerreviewmaketitlei
-Question : Consider the following regression model
+\begin{frame}{Question}
+Consider the following regression model
 \begin{center}
 	$y_{k} = \alpha_{0} + \alpha_{1} \log_{e}k + \epsilon_{k}, \qquad k = 1,2,…,n,$\\
 \end{center}
 where $\epsilon_{k}$'s are independent and identically distributed random variables each
 having probability density function $ f\brak{x} = \frac{1}{2} e^{-|x|}, x \in \mathbb{R}$. Then which one of
 the following statements is true? 
-\begin{enumerate}[label=(\Alph*)]
+\begin{enumerate}
 	\item The maximum likelihood estimator of $\alpha_{0}$ does not exist
 	\item The maximum likelihood estimator of $\alpha_{1}$ does not exist
 	\item The least squares estimator of $\alpha_{0}$ exists and is unique
 	\item The least squares estimator of $\alpha_{1}$ exists, but it is not unique
 \end{enumerate}
-\solution
+\end{frame}
+
+
+\begin{frame}[allowframebreaks]{Likelihood Function}
+%\begin{itemize}
 \begin{align}
 	f(\epsilon_{k}) &= \frac{1}{2} e^{-|\epsilon_{k}|}\\
 	\text{Likelihood function}: f(\epsilon_{1}\epsilon_{2}....\epsilon_{n}) &= \prod_{k = 1}^{n} f(\epsilon_{k})\\
 	L     &= \prod_{k = 1}^{n}\frac{1}{2}e^{-|\epsilon_{k}|}\\
 L_{1} = \ln L &= \ln\brak{\prod_{k = 1}^{n}\frac{1}{2}e^{-|\epsilon_{k}|}}\\
-	      &= \sum_{k = 1}^{n} \ln\brak{\frac{1}{2}e^{-|\epsilon_{k}|}}\\
+	      &= \sum_{k = 1}^{n} \ln\brak{\frac{1}{2}e^{-|\epsilon_{k}|}}
+\end{align}
+%\end{frame}
+%
+%
+%\begin{frame}
+\begin{align}
 	      &= \sum_{k = 1}^{n} \brak{-\ln 2 -|y_{k}-\alpha_{0}-\alpha_{1} \log_{e}k|}\\
 	      &= -n\ln 2 -\sum_{k = 1}^{n} \brak{|y_{k}-\alpha_{0}-\alpha_{1} \log_{e}k|}\\  
 	L_{1} &= \text{function of }\alpha_{0}, \alpha_{1}
 \end{align}
-\begin{enumerate}
-	\item Maximum likelihood estimator\\
-	We need to find the value of $\alpha_{0}$ and $\alpha_{1}$ which will maximise the value of $L_{1}$ i.e. the value of 
+We need to find the value of $\alpha_{0}$ and $\alpha_{1}$ which will maximise the value of $L_{1}$ i.e. the value of 
 	$\alpha_{0}$ and $\alpha_{1}$ which will minimise the value of $\sum_{k = 1}^{n}|y_{k}-\alpha_{0}-\alpha_{1} \log_{e}k|$
-		\begin{enumerate}
-\item With respect to $\alpha_{0}$
+\end{frame}
+
+
+\begin{frame}[allowframebreaks]{Maximum Likelihood Estimator for $\alpha_{0}$}
 \begin{enumerate}
 	\item For $y_{k}-\alpha_{0}-\alpha_{1} \log_{e}k > 0$
 \begin{mini*}|s|
@@ -259,7 +165,12 @@ Using Lagrange multiplier method
 	\lambda &= -1\\
 	\alpha_{0} &= y_{k} - \alpha_{1} \log_{e}k
 \end{align}
-	\item For $y_{k}-\alpha_{0}-\alpha_{1} \log_{e}k < 0$
+%\end{enumerate}
+%\end{frame}
+%
+%\begin{frame}
+%\begin{enumerate}
+\item For $y_{k}-\alpha_{0}-\alpha_{1} \log_{e}k < 0$
 \begin{mini*}|s|
 {\alpha_{0}}{-\brak{y_{k}-\alpha_{0}-\alpha_{1} \log_{e}k}}
 {}{}
@@ -276,13 +187,16 @@ Using Lagrange multiplier method
 As value of $\alpha_{0}$ matches for both cases of modulus\\
 $\therefore$ The maximum likelihood estimator of $\alpha_{0}$ exist
 \end{enumerate}
-\item With respect to $\alpha_{1}$
-	\begin{enumerate}
+\end{frame}
+
+
+\begin{frame}[allowframebreaks]{Maximum Likelihood Estimator for $\alpha_{1}$}
+\begin{enumerate}
 	\item For $y_{k}-\alpha_{0}-\alpha_{1} \log_{e}k > 0$
 \begin{mini*}|s|
 {\alpha_{1}}{y_{k}-\alpha_{0}-\alpha_{1} \log_{e}k}
 {}{}
-	\addConstraint{\alpha_{1}\leq \frac{y_{k}-\alpha_{0}}{\log_{e}k}}{}
+\addConstraint{\alpha_{1}\leq \frac{y_{k}-\alpha_{0}}{\log_{e}k}}{}
 \end{mini*}
 Using Lagrange multiplier method
 \begin{align}
@@ -296,7 +210,7 @@ Using Lagrange multiplier method
 \begin{mini*}|s|
 {\alpha_{1}}{-\brak{y_{k}-\alpha_{0}-\alpha_{1} \log_{e}k}}
 {}{}
-        \addConstraint{\alpha_{1}\geq \frac{y_{k}-\alpha_{0}}{\log_{e}k}}{}
+\addConstraint{\alpha_{1}\geq \frac{y_{k}-\alpha_{0}}{\log_{e}k}}{}
 \end{mini*}
 Using Lagrange multiplier method
 \begin{align}
@@ -308,17 +222,23 @@ Using Lagrange multiplier method
 \end{align}
 As value of $\alpha_{1}$ matches for both cases of modulus\\
 $\therefore$ The maximum likelihood estimator of $\alpha_{1}$ exist\\
-\end{enumerate}
 $\therefore$ Option \brak{A} and \brak{B} are incorrect\\
-\item Least square estimator\\
+\end{enumerate}
+\end{frame}
+
+
+\begin{frame}[allowframebreaks]{Least Square Estimator}
 The least square estimator of $\alpha_{0}$ and $\alpha_{1}$ is $\tilde{\alpha_{0}}$ and $\tilde{\alpha_{1}}$ which will minimise
+\begin{align}
+Q\brak{\alpha_{0},\alpha_{1}} &=  \sum_{k = 1}^{n} \brak{y_{k}-\alpha_{0}-\alpha_{1} \log_{e}k}^2
+\end{align}
 \begin{table}[!htb]
 	\input{./tables/table.tex}
 	\caption{Variables used}
 	\label{table_gate23_st_26}
 \end{table}
 \begin{align}
-	Q\brak{\alpha_{0},\alpha_{1}} &=  \sum_{k = 1}^{n} \brak{y_{k}-\alpha_{0}-\alpha_{1} \log_{e}k}^2\\
+	%Q\brak{\alpha_{0},\alpha_{1}} &=  \sum_{k = 1}^{n} \brak{y_{k}-\alpha_{0}-\alpha_{1} \log_{e}k}^2\\
 \frac{\partial Q}{\partial \alpha_{0}} &= -2 \sum_{k = 1}^{n} \brak{y_{k}-\alpha_{0}-\alpha_{1} \log_{e}k} = 0\\
 	\sum_{k = 1}^{n} \brak{y_{k}-\alpha_{0}-\alpha_{1} \log_{e}k} &= 0\\
 	n\bar{y} - n\alpha_{0} - \alpha_{1}n\bar{x} &= 0 \\%,\quad \text{where } \bar{x} = \frac{1}{n} \sum_{k = 1}^{n}\log_{e}k,\quad \bar{y} = \frac{1}{n} \sum_{k = 1}^{n}y_{k}\\
@@ -328,8 +248,11 @@ The least square estimator of $\alpha_{0}$ and $\alpha_{1}$ is $\tilde{\alpha_{0
 \end{align}
 $\therefore$ Least square estimator of $\alpha_{0}$ and $\alpha_{1}$ exists and are unique\\
 $\therefore$ Option \brak{C} is correct and \brak{D} is incorrect\\
-\item Steps for simulation the given distribution whose 
-	probability density function is $ f\brak{x} = \frac{1}{2} e^{-|x|}$
+\end{frame}
+
+
+\begin{frame}[allowframebreaks]{Simulation}
+probability density function is $ f\brak{x} = \frac{1}{2} e^{-|x|}$
 \begin{enumerate}
 \item Write a function cdf for calculating the cdf of any random variable\\
 	 \begin{align}
@@ -394,6 +317,6 @@ $\therefore$ Option \brak{C} is correct and \brak{D} is incorrect\\
 \item Storing the data of these three array into a .dat file
 \item Plotting these .dat file in python
 \end{enumerate}
-\end{enumerate}
-\end{enumerate}
+\end{frame}
 \end{document}
+
