@@ -1,8 +1,8 @@
-console.log("Welcome to Spotify");
+console.log("Welcome to Sur Sarang");
 
 // Initialize the Variables
 let songIndex = 0;
-let audioElement = new Audio('songs/1.mp3');
+let audioElement = new Audio();
 let masterPlay = document.getElementById('masterPlay');
 let myProgressBar = document.getElementById('myProgressBar');
 let gif = document.getElementById('gif');
@@ -10,13 +10,13 @@ let masterSongName = document.getElementById('masterSongName');
 let songItems = Array.from(document.getElementsByClassName('songItem'));
 
 let songs = [
-    {songName: "Hum Honge Kamyab By Mayank", filePath: "songs/1.mp3", coverPath: "covers/1.jpeg"},
-    {songName: "Jaane Kyun By Ved and Yash", filePath: "songs/2.mp3", coverPath: "covers/2.jpeg"},
-    {songName: "Neela Neela Amber By Dushyant and Snehil", filePath: "songs/3.mp3", coverPath: "covers/3.jpg"},
+    {songName: "Hum Honge Kamyab By Mayank", filePath: "songs/1.mp3", coverPath: "covers/1.jpeg" },
+    {songName: "Jaane Kyun By Ved and Yash", filePath: "songs/2.mp3", coverPath: "covers/2.jpeg" },
+    {songName: "Neela Neela Amber By Dushyant and Snehil", filePath: "songs/3.mp3", coverPath: "covers/3.jpg" },
     {songName: "Telegu Song11", filePath: "songs/4.mp3", coverPath: "covers/4.jpg"},
     {songName: "Ganesh Vandana By ", filePath: "songs/5.mp3", coverPath: "covers/5.jpg"},
     {songName: "Chhath Puja Song By Aman and Jay", filePath: "songs/6.mp3", coverPath: "covers/6.jpg"},
-    {songName: "Saraswati Vandana By Siri", filePath: "songs/7.mp3", coverPath: "covers/7.jpg"},
+    {songName: "Saraswati Vandana By Ved and Tanmay", filePath: "songs/7.mp3", coverPath: "covers/7.jpg"},
     {songName: "Teri Mitti By Dhruv and Sameer", filePath: "songs/8.mp3", coverPath: "covers/8.jpeg"},
     {songName: "Sham By Dushyant", filePath: "songs/9.mp3", coverPath: "covers/9.jpg"},
     {songName: "Khaab By Sammer", filePath: "songs/10.mp3", coverPath: "covers/10.jpeg"},
@@ -58,54 +58,63 @@ let songs = [
     {songName: "Telegu Song2", filePath: "songs/46.mp3", coverPath: "covers/46.jpg"},
     {songName: "Telegu Song1", filePath: "songs/47.mp3", coverPath: "covers/47.jpg"},
     {songName: "Group Song", filePath: "songs/48.mp3", coverPath: "covers/48.jpg"},
-]
+];
 
-songItems.forEach((element, i)=>{ 
-    element.getElementsByTagName("img")[0].src = songs[i].coverPath; 
-    element.getElementsByClassName("songName")[0].innerText = songs[i].songName; 
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+}
+
+// Call the shuffleArray function on the songs array to shuffle it initially
+shuffleArray(songs);
+
+songItems.forEach((element, i) => {
+    element.getElementsByTagName("img")[0].src = songs[i].coverPath;
+    element.getElementsByClassName("songName")[0].innerText = songs[i].songName;
 })
- 
 
 // Handle play/pause click
-masterPlay.addEventListener('click', ()=>{
-    if(audioElement.paused || audioElement.currentTime<=0){
+masterPlay.addEventListener('click', () => {
+    if (audioElement.paused || audioElement.currentTime <= 0) {
         audioElement.play();
         masterPlay.classList.remove('fa-play-circle');
         masterPlay.classList.add('fa-pause-circle');
         gif.style.opacity = 1;
-    }
-    else{
+    } else {
         audioElement.pause();
         masterPlay.classList.remove('fa-pause-circle');
         masterPlay.classList.add('fa-play-circle');
         gif.style.opacity = 0;
     }
 })
+
 // Listen to Events
-audioElement.addEventListener('timeupdate', ()=>{ 
+audioElement.addEventListener('timeupdate', () => {
     // Update Seekbar
-    progress = parseInt((audioElement.currentTime/audioElement.duration)* 100); 
+    progress = parseInt((audioElement.currentTime / audioElement.duration) * 100);
     myProgressBar.value = progress;
 })
 
-myProgressBar.addEventListener('change', ()=>{
-    audioElement.currentTime = myProgressBar.value * audioElement.duration/100;
+myProgressBar.addEventListener('change', () => {
+    audioElement.currentTime = myProgressBar.value * audioElement.duration / 100;
 })
 
-const makeAllPlays = ()=>{
-    Array.from(document.getElementsByClassName('songItemPlay')).forEach((element)=>{
+const makeAllPlays = () => {
+    Array.from(document.getElementsByClassName('songItemPlay')).forEach((element) => {
         element.classList.remove('fa-pause-circle');
         element.classList.add('fa-play-circle');
-    })
+    });
 }
 
-Array.from(document.getElementsByClassName('songItemPlay')).forEach((element)=>{
-    element.addEventListener('click', (e)=>{ 
+Array.from(document.getElementsByClassName('songItemPlay')).forEach((element) => {
+    element.addEventListener('click', (e) => {
         makeAllPlays();
         songIndex = parseInt(e.target.id);
         e.target.classList.remove('fa-play-circle');
         e.target.classList.add('fa-pause-circle');
-        audioElement.src = `songs/${songIndex+1}.mp3`;
+        audioElement.src = songs[songIndex].filePath;
         masterSongName.innerText = songs[songIndex].songName;
         audioElement.currentTime = 0;
         audioElement.play();
@@ -115,33 +124,81 @@ Array.from(document.getElementsByClassName('songItemPlay')).forEach((element)=>{
     })
 })
 
-document.getElementById('next').addEventListener('click', ()=>{
-    if(songIndex>=9){
-        songIndex = 0
-    }
-    else{
+document.getElementById('next').addEventListener('click', () => {
+    if (songIndex >= songs.length - 1) {
+        songIndex = 0;
+    } else {
         songIndex += 1;
     }
-    audioElement.src = `songs/${songIndex+1}.mp3`;
+    audioElement.src = songs[songIndex].filePath;
     masterSongName.innerText = songs[songIndex].songName;
     audioElement.currentTime = 0;
     audioElement.play();
     masterPlay.classList.remove('fa-play-circle');
     masterPlay.classList.add('fa-pause-circle');
-
 })
 
-document.getElementById('previous').addEventListener('click', ()=>{
-    if(songIndex<=0){
-        songIndex = 0
-    }
-    else{
+document.getElementById('previous').addEventListener('click', () => {
+    if (songIndex <= 0) {
+        songIndex = songs.length - 1;
+    } else {
         songIndex -= 1;
     }
-    audioElement.src = `songs/${songIndex+1}.mp3`;
+    audioElement.src = songs[songIndex].filePath;
     masterSongName.innerText = songs[songIndex].songName;
     audioElement.currentTime = 0;
     audioElement.play();
     masterPlay.classList.remove('fa-play-circle');
     masterPlay.classList.add('fa-pause-circle');
 })
+
+// Add event listener for the shuffle button
+document.getElementById('shuffle').addEventListener('click', () => {
+    // Shuffle the songs array
+    shuffleArray(songs);
+
+    // Reset the songIndex to 0
+    songIndex = 0;
+
+    // Update the audioElement source with the first song in the shuffled array
+    audioElement.src = songs[songIndex].filePath;
+
+    // Update masterSongName
+    masterSongName.innerText = songs[songIndex].songName;
+
+    // Reset the play button
+    masterPlay.classList.remove('fa-pause-circle');
+    masterPlay.classList.add('fa-play-circle');
+
+    // Update the song items in the UI
+    songItems.forEach((element, i) => {
+        element.getElementsByTagName("img")[0].src = songs[i].coverPath;
+        element.getElementsByClassName("songName")[0].innerText = songs[i].songName;
+    });
+});
+
+// Add event listener for the original order button
+document.getElementById('originalOrder').addEventListener('click', () => {
+    // Sort the songs array back to its original order
+    songs.sort((a, b) => a.songName.localeCompare(b.songName));
+
+    // Reset the songIndex to 0
+    songIndex = 0;
+
+    // Update the audioElement source with the first song in the original array
+    audioElement.src = songs[songIndex].filePath;
+
+    // Update masterSongName
+    masterSongName.innerText = songs[songIndex].songName;
+
+    // Reset the play button
+    masterPlay.classList.remove('fa-pause-circle');
+    masterPlay.classList.add('fa-play-circle');
+
+    // Update the song items in the UI
+    songItems.forEach((element, i) => {
+        element.getElementsByTagName("img")[0].src = songs[i].coverPath;
+        element.getElementsByClassName("songName")[0].innerText = songs[i].songName;
+    });
+});
+
