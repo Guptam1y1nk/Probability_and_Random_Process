@@ -8,6 +8,8 @@ let myProgressBar = document.getElementById('myProgressBar');
 let gif = document.getElementById('gif');
 let masterSongName = document.getElementById('masterSongName');
 let songItems = Array.from(document.getElementsByClassName('songItem'));
+let volumeIcon = document.getElementById('mute');
+let volumeSlider = document.getElementById('volume');
 
 let songs = [
     {songName: "Hum Honge Kamyab By Mayank", filePath: "songs/1.mp3", coverPath: "covers/1.jpeg" },
@@ -59,6 +61,36 @@ let songs = [
     {songName: "Telegu Song1", filePath: "songs/47.mp3", coverPath: "covers/47.jpg"},
     {songName: "Group Song", filePath: "songs/48.mp3", coverPath: "covers/48.jpg"},
 ];
+
+audioElement.volume = volumeSlider.value / 100;
+
+// Handle mute/unmute
+volumeIcon.addEventListener('click', () => {
+    if (audioElement.volume > 0) {
+        audioElement.volume = 0;
+        volumeSlider.value = 0;
+        volumeIcon.classList.remove('fa-volume-up');
+        volumeIcon.classList.add('fa-volume-mute');
+    } else {
+        audioElement.volume = volumeSlider.value / 100;
+        volumeIcon.classList.remove('fa-volume-mute');
+        volumeIcon.classList.add('fa-volume-up');
+    }
+});
+
+// Handle volume change
+volumeSlider.addEventListener('input', () => {
+    audioElement.volume = volumeSlider.value / 100;
+
+    // Update volume icon based on the volume level
+    if (audioElement.volume === 0) {
+        volumeIcon.classList.remove('fa-volume-up');
+        volumeIcon.classList.add('fa-volume-mute');
+    } else {
+        volumeIcon.classList.remove('fa-volume-mute');
+        volumeIcon.classList.add('fa-volume-up');
+    }
+});
 
 function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
@@ -201,4 +233,37 @@ document.getElementById('originalOrder').addEventListener('click', () => {
         element.getElementsByClassName("songName")[0].innerText = songs[i].songName;
     });
 });
+// Add the following code after the timeupdate event listener
 
+audioElement.addEventListener('loadedmetadata', () => {
+    // Update the total duration when the audio is loaded
+    updateDuration();
+});
+
+// Add a function to update the song duration
+function updateDuration() {
+    // Display the current time and total duration in minutes and seconds
+    let currentTime = Math.floor(audioElement.currentTime);
+    let duration = Math.floor(audioElement.duration);
+
+    let currentMinutes = Math.floor(currentTime / 60);
+    let currentSeconds = currentTime % 60;
+    currentSeconds = currentSeconds < 10 ? '0' + currentSeconds : currentSeconds;
+
+    let totalMinutes = Math.floor(duration / 60);
+    let totalSeconds = duration % 60;
+    totalSeconds = totalSeconds < 10 ? '0' + totalSeconds : totalSeconds;
+
+    // Update the duration element
+    document.getElementById('duration').innerText = `${currentMinutes}:${currentSeconds} / ${totalMinutes}:${totalSeconds}`;
+}
+
+// Update the timeupdate event listener to call the updateDuration function
+audioElement.addEventListener('timeupdate', () => {
+    // Update Seekbar
+    progress = parseInt((audioElement.currentTime / audioElement.duration) * 100);
+    myProgressBar.value = progress;
+
+    // Update the song duration
+    updateDuration();
+});
